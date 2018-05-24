@@ -6,10 +6,12 @@
     <div class="col-xs-6 col-md-6">
       <% if @seller.name? %><h1><strong><%= @seller.name.upcase %></strong></h1><% end %>
       <br />
-      <br />
       <% if @seller.website? %><%= link_to "Website", @seller.website, class: 'sub-title', target: :_blank %><% end %>
-      <br />
-      <% if @seller.description? %><%= @seller.description %><% end %>
+      <div class="description-text">
+        <% if @seller.description? %>
+          <%= @seller.description %>
+        <% end %>
+      </div>
       <br />
       <%#<% if @seller.material_id? %><%#= link_to @seller.material.name, @seller.material, class: 'sub-title' %><%# end %>
     </div>
