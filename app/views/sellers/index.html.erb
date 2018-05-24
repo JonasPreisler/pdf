@@ -1,0 +1,28 @@
+<br />
+<% @sellers.each do |seller| %>
+    <div class="col-md-3 col-sm-4">
+      <div class="thumbnail">
+        <% if seller.logo? %>
+          <%= link_to (image_tag seller.logo.url(:small)), seller, class: 'seller-preview' %>
+        <% else %>
+          <%= image_tag '/thumbnail.png' %>
+        <% end %>
+        <div class="caption">
+          <h4 style="font-size:16px;"><%= link_to seller.name, seller %></h4>
+          <div style="font-size:12px;"><%= seller.country %></div>
+        </div>
+        <div class="panel-footer">
+          <div class="row">
+            <div class="col-xs-8 col-sm-6">
+              &#9889; rating
+            </div>
+            <div class="col-xs-4 col-sm-6">
+              <%= link_to "Shop", seller %>
+            </div>
+          </div>                  
+        </div>
+      </div>
+    </div>
+<% end %>
+
+

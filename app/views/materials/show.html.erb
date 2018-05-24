@@ -1,0 +1,76 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+
+  <div class="row">
+    <div class="col-xs-4 col-md-2 hide-mobile">
+        <table>
+          <tbody>
+            <% @materials.each do |material| %>
+              <tr>
+                <td><%= link_to material.name, material, class: 'nano-list' %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-8 nano-card">
+      <div class="col-xs-6 col-md-6 col-sm-6">
+        <h1><strong><%= @material.name.upcase %></strong></h1>
+        <br /><%#= @material.sellers.seller_name %>
+        <div class="sub-title">What is <%= @material.name %>?</div>
+        <br />
+        <div class="card-text"><%= simple_format(@material.description) %></div>
+      <br />
+      </div>
+
+      <div class="col-xs-6 col-md-6">
+        <% if @material.image? %>
+          <%= image_tag @material.image.url(:small), class: 'img-responsive' %>
+        <% else %>
+          <%= image_tag '/thumbnail.png' %>
+        <% end %>
+      </div>
+        
+      <hr>
+      <div class="sub-title">Where can you buy <%= @material.name %>s?</div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Country</th>
+            <th>Webshop</th>
+            <th>Company</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+            <td>Hello</td>
+            <td>Hello</td>
+            <td>Hello</td>
+            </tr>
+        </tbody>
+      </table>
+      <%= link_to "Sell on Nanodex", new_seller_path, class: 'btn btn-primary' %>
+    </div>
+    <div class="col-xs-4 col-md-2  hide-mobile">
+      <%= render 'sellers/random_seller' %>
+    </div>
+  </div>
+</div>
+<br />
+<center>
+  <div class="only-mobile">
+    <%= render 'sellers/random_seller_mobile' %>
+    <hr>
+    <table>
+      <tbody>
+        <% @materials.each do |material| %>
+          <tr>
+            <td><%= link_to material.name, material, class: 'nano-list' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</center>

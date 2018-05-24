@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<br />
+
+<center>
+  <table>
+    <tbody>
+      <% @materials.each do |material| %>
+        <tr>
+          <td><%= link_to material.name, material, class: 'nano-list' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</center>
+

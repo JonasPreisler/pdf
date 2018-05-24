@@ -1,0 +1,63 @@
+<div class="container" id="material-form">
+  <div class="image"></div>
+  <div class="frm">
+      <h1>Add material</h1>
+        <%= form_for @material, html: { multipart: true } do |form| %>
+          <% if material.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(material.errors.count, "error") %> prohibited this material from being saved:</h2>
+
+              <ul>
+              <% material.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="field">
+            <%= form.text_field :name, placeholder: "material name", class: 'form-control' %>
+          </div>
+
+          <br />
+
+          <div class="field">
+            <%= form.text_area :description, placeholder: "Description", class: 'form-control' %>
+          </div>
+
+          <br />
+          <div class="input-group">
+            <%= form.label :image_300x300 %><br />
+            <%= form.file_field :image %>
+            <%= form.hidden_field :image_cache %>
+          </div>
+
+          <br />
+
+          <div class="actions">
+            <%= form.submit "Create material", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </form>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-md-4 col-sm-4"></div>
+  <div class="col-md-4 col-sm-4"><nano>
+  <main>
+    <div class="marker"></div>
+    <h1>N</h1>
+    <h1 class="r">A</h1>
+    <h1 class="e1">N</h1>
+    <h1 class="s1">O</h1>
+    <h1 class="s2">D</h1>
+    <h1 class="e2">E</h1>
+    <h1 >X</h1>
+  </main>
+</nano></div>
+  <div class="col-md-4 col-sm-4"></div>
+</div>
+
