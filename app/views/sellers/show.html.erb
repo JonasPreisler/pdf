@@ -4,10 +4,10 @@
   </div>
   <div class="col-md-8 nano-card">
     <div class="col-xs-6 col-md-6">
-      <h1><strong><%= @seller.name.upcase %></strong></h1>
+      <% if @seller.name? %><h1><strong><%= @seller.name.upcase %></strong></h1><% end %>
       <br />
       <br />
-      <%= link_to "Website", @seller.website, class: 'sub-title', target: :_blank %>
+      <% if @seller.website? %><%= link_to "Website", @seller.website, class: 'sub-title', target: :_blank %><% end %>
       <br />
       <% if @seller.description? %><%= @seller.description %><% end %>
       <br />
@@ -24,24 +24,26 @@
     <br />
     <br />
     <hr>
-    <div class="sub-title">Products sold by <%= @seller.name %></div>
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Country</th>
-          <th>Website</th>
-          <th>Company</th>
-        </tr>
-      </thead>
-
-      <tbody>
+    <% if @seller.name? %>
+      <div class="sub-title">Products sold by <%= @seller.name %></div>
+      <table class="table table-hover">
+        <thead>
           <tr>
-          <td>Coming soon</td>
-          <td>Coming soon</td>
-          <td>Coming soon</td>
+            <th>Country</th>
+            <th>Website</th>
+            <th>Company</th>
           </tr>
-      </tbody>
-    </table>
+        </thead>
+
+        <tbody>
+            <tr>
+            <td>Coming soon</td>
+            <td>Coming soon</td>
+            <td>Coming soon</td>
+            </tr>
+        </tbody>
+      </table>
+    <% end %>
 
   </div>
 <div class="row">
