@@ -9,8 +9,9 @@
       <br />
       <%= link_to "Website", @seller.website, class: 'sub-title', target: :_blank %>
       <br />
+      <% if @seller.description? %><%= @seller.description %><% end %>
       <br />
-      <%= link_to @seller.material.name, @seller.material, class: 'sub-title' %>
+      <% if @seller.material_id? %><%= link_to @seller.material.name, @seller.material, class: 'sub-title' %><% end %>
     </div>
 
     <div class="col-xs-6 col-md-6">
@@ -28,16 +29,16 @@
       <thead>
         <tr>
           <th>Country</th>
-          <th>Webshop</th>
+          <th>Website</th>
           <th>Company</th>
         </tr>
       </thead>
 
       <tbody>
           <tr>
-          <td>Hello</td>
-          <td>Hello</td>
-          <td>Hello</td>
+          <td>Coming soon</td>
+          <td>Coming soon</td>
+          <td>Coming soon</td>
           </tr>
       </tbody>
     </table>
