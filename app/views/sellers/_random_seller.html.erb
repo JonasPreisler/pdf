@@ -5,8 +5,8 @@
     <%= link_to (image_tag '/thumbnail.png'), @seller %>
   <% end %>
   <div class="caption">
-    <h4 style="font-size:16px;"><%= link_to @random_seller2.name, seller_path(@random_seller2) %></h4>
-    <div style="font-size:12px;"><%= @random_seller2.country %></div>
+    <h4 style="font-size:16px;"><%= link_to @random_seller.name, seller_path(@random_seller) %></h4>
+    <div style="font-size:12px;"><%= @random_seller.country %></div>
   </div>
   <div class="panel-footer">
     <div class="row">
@@ -23,7 +23,7 @@
   <% if @random_seller2.logo? %>
     <%= link_to (image_tag @random_seller2.logo.url(:sidebar)), seller_path(@random_seller2), class: 'seller-preview' %>
   <% else %>
-    <%= link_to (image_tag '/thumbnail.png'), @seller %>
+    <%= link_to (image_tag '/thumbnail.png'), @seller, class: 'preview-seller' %>
   <% end %>
   <div class="caption">
     <h4 style="font-size:16px;"><%= link_to @random_seller2.name, seller_path(@random_seller2) %></h4>

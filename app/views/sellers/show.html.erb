@@ -60,8 +60,8 @@
               <%= link_to (image_tag '/thumbnail.png'), seller %>
             <% end %>
             <div class="caption">
-              <h4 style="font-size:16px;"><%= link_to @random_seller2.name, seller_path(@random_seller2) %></h4>
-              <div style="font-size:12px;"><%= @random_seller2.country %></div>
+              <h4 style="font-size:16px;"><%= link_to seller.name, seller_path %></h4>
+              <div style="font-size:12px;"><%= seller.country %></div>
             </div>
             <div class="panel-footer">
               <div class="row">

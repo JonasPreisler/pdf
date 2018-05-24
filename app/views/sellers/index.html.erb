@@ -5,7 +5,7 @@
         <% if seller.logo? %>
           <%= link_to (image_tag seller.logo.url(:small)), seller, class: 'seller-preview' %>
         <% else %>
-          <%= image_tag '/thumbnail.png' %>
+          <%= link_to (image_tag '/thumbnail.png'), seller, class: 'seller-preview' %>
         <% end %>
         <div class="caption">
           <h4 style="font-size:16px;"><%= link_to seller.name, seller %></h4>
