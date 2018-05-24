@@ -1,0 +1,82 @@
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <ol class="breadcrumb">
+            <li>
+              <%= link_to @product.seller.name, @product.seller %>
+            </li>
+            <li>
+              <%= link_to @product.material.name, @product.material %>
+            </li>
+            <li class="active">
+                <strong>Product detail</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+<div class="row">
+    <div class="col-lg-12">
+
+        <div class="ibox product-detail">
+            <div class="ibox-content">
+
+                <div class="row">
+                    <div class="col-md-5">
+
+
+
+                        <!-- <div class="product-images">
+
+                            <div>
+                                <div class="image-imitation">
+                                    <%# if @product.product_attachments.any? %>
+                                      <div id="Img_carousel" class="slider-pro">
+                                          <div class="sp-slides">
+
+                                            <%# @product.product_attachments.each do |product_attachment| %>
+                                              <div class="sp-slide">
+                                                  <img alt="Image" class="sp-image" src="<%#= asset_path('loader.gif') %>" 
+                                                  data-src="<%#= asset_path(product_attachment.cover_url) %>" 
+                                                  data-small="<%#= asset_path(product_attachment.cover_url) %>" 
+                                                  data-medium="<%#= asset_path(product_attachment.cover_url) %>" 
+                                                  data-large="<%#= asset_path(product_attachment.cover_url) %>" 
+                                                  data-retina="<%#= asset_path(product_attachment.cover_url) %>">
+                                              </div>    
+                                            <%# end %>
+                                          </div>
+                                          <div class="sp-thumbnails">
+                                            <%# @product.product_attachments.each do |product_attachment| %>
+                                              <img alt="Image" class="sp-thumbnail" src="<%#= asset_path(product_attachment.cover_url(:slide_thumb)) %>">
+                                            <%# end %>
+                                          </div>
+                                      </div>  
+                                    <%# end %>
+                                    <%#= image_tag @product.product, class: 'product-image' %>
+                                </div>
+                            </div>
+                        </div> -->
+
+                    </div>
+                    <div class="col-md-7">
+
+                        <h2 class="font-bold m-b-xs">
+                          <%= @product.name %>
+                        </h2>
+                        <h4><%= link_to @product.material.name, material_path(@product.material)%></h4>
+                        <h4><%= link_to @product.seller.name, material_path(@product.seller)%></h4>
+                      
+                        
+                        </dl>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+

@@ -2,7 +2,7 @@
   <% if @random_seller.logo? %>
     <%= link_to (image_tag @random_seller.logo.url(:sidebar)), seller_path(@random_seller), class: 'seller-preview' %>
   <% else %>
-    <%= link_to (image_tag '/thumbnail.png'), @seller %>
+    <%= link_to (image_tag '/thumbnail.png'), seller_path(@random_seller), class: 'seller-preview' %>
   <% end %>
   <div class="caption">
     <h4 style="font-size:16px;"><%= link_to @random_seller.name, seller_path(@random_seller) %></h4>
@@ -14,7 +14,7 @@
         &#9889; rating
       </div>
       <div class="col-xs-4 col-sm-6">
-        <%= link_to "Shop", @random_seller %>
+        <%= link_to "Visit", @random_seller %>
       </div>
     </div>                  
   </div>
@@ -23,7 +23,7 @@
   <% if @random_seller2.logo? %>
     <%= link_to (image_tag @random_seller2.logo.url(:sidebar)), seller_path(@random_seller2), class: 'seller-preview' %>
   <% else %>
-    <%= link_to (image_tag '/thumbnail.png'), @seller, class: 'preview-seller' %>
+    <%= link_to (image_tag '/thumbnail.png'), seller_path(@random_seller2), class: 'seller-preview' %>
   <% end %>
   <div class="caption">
     <h4 style="font-size:16px;"><%= link_to @random_seller2.name, seller_path(@random_seller2) %></h4>
@@ -35,7 +35,7 @@
         &#9889; rating
       </div>
       <div class="col-xs-4 col-sm-6">
-        <%= link_to "Shop", @random_seller2 %>
+        <%= link_to "Visit", @random_seller2 %>
       </div>
     </div>                  
   </div>

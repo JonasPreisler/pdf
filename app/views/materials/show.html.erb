@@ -36,6 +36,14 @@
       <div class="sub-title">Where can you buy <%= @material.name %>s?</div>
       <table class="table table-hover">
         <thead>
+            <%# @products.each do |product| %>
+              <tr>
+                <th><%#= link_to @material.products.name, product_path(product) %></th>
+              </tr>
+            <%# end %>
+        </thead>
+
+        <thead>
           <tr>
             <th>Country</th>
             <th>Webshop</th>
@@ -51,7 +59,7 @@
             </tr>
         </tbody>
       </table>
-      <%= link_to "Sell on Nanodex", new_seller_path, class: 'btn btn-primary' %>
+      <%= link_to "Become a seller", new_seller_path, class: 'btn btn-primary' %>
     </div>
     <div class="col-xs-4 col-md-2  hide-mobile">
       <%= render 'sellers/random_seller' %>

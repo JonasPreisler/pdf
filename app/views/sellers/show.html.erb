@@ -8,12 +8,16 @@
       <br />
       <br />
       <%= link_to "Website", @seller.website, class: 'sub-title', target: :_blank %>
+      <br />
+      <br />
+      <%= link_to @seller.material.name, @seller.material, class: 'sub-title' %>
     </div>
 
     <div class="col-xs-6 col-md-6">
       <% if @seller.logo? %>
         <%= image_tag @seller.logo.url(:small), class: 'img-responsive' %>
       <% else %>
+        <%= image_tag '/thumbnail.png', class: 'img-responsive' %>
       <% end %>
     </div>
     <br />
@@ -57,7 +61,7 @@
             <% if seller.logo? %>
               <%= link_to (image_tag seller.logo.url(:small)), seller, class: 'seller-preview' %>
             <% else %>
-              <%= link_to (image_tag '/thumbnail.png'), seller %>
+              <%= link_to (image_tag '/thumbnail.png'), seller, class: 'seller-preview' %>
             <% end %>
             <div class="caption">
               <h4 style="font-size:16px;"><%= link_to seller.name, seller_path %></h4>
@@ -69,7 +73,7 @@
                   &#9889; rating
                 </div>
                 <div class="col-xs-4 col-sm-6">
-                  <%= link_to "Shop", seller %>
+                  <%= link_to "Visit", seller %>
                 </div>
               </div>                  
             </div>

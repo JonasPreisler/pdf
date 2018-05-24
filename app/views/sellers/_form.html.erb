@@ -40,6 +40,10 @@
           <div class="field">
             <%= form.text_field :email, placeholder: "Email", class: 'form-control'  %>
           </div>
+          <div class="field">
+            <%= form.label :what_materials_do_you_sell? %>
+            <%= form.select :material_id, Material.all.map { |u| [u.name, u.id] }, {}, { class: 'chosen-select form-control' } %>
+          </div>
 
           <br />
 

@@ -1,7 +1,9 @@
 class Material < ApplicationRecord
     mount_uploader :image, ImageUploader
-    has_many :taggings, dependent: :destroy
-    has_many :sellers, through: :taggings, dependent: :destroy
     extend FriendlyId
     friendly_id :name, use: [:slugged, :finders]
+	def should_generate_new_friendly_id?
+	  name_changed?
+	end
+    has_many :products
 end
