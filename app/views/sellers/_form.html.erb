@@ -61,6 +61,9 @@
           <div class="actions">
             <%= form.submit "Become a seller", class: 'btn btn-primary' %>
           </div>
+          <br />
+          <%= link_to 'Delete seller', seller_path(@seller),
+            data: {:confirm => 'Are you sure?'}, :method => :delete, class: 'btn btn-danger' %>
         <% end %>
       </form>
   </div>
