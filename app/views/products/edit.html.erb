@@ -1,1 +1,50 @@
-<%= render 'form' %>
+<div class="container" id="material-form">
+  <div class="image"></div>
+  <div class="frm">
+	<%= render 'form' %>
+	<br />
+	  <%= link_to 'Delete product', product_path(@product), data: {:confirm => 'Are you sure you want to delete this product?'}, :method => :delete, class: 'btn btn-danger' %>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-4 col-sm-4"></div>
+  <div class="col-md-4 col-sm-4"><nano>
+  <main>
+    <div class="marker"></div>
+    <h1>N</h1>
+    <h1 class="r">A</h1>
+    <h1 class="e1">N</h1>
+    <h1 class="s1">O</h1>
+    <h1 class="s2">D</h1>
+    <h1 class="e2">E</h1>
+    <h1 >X</h1>
+  </main>
+</nano></div>
+  <div class="col-md-4 col-sm-4"></div>
+</div>
+
+
+<script type="text/javascript">
+    $( "#product_materials" ).select2();
+    //$( "#product_tag_ids_chosen" ).select2();  
+</script>
+
+
+
+<script type="text/javascript">
+    $('#product_materials').change(function(argument) {
+      console.log($(this)[0].value)
+      var mat_id = $(this)[0].value;
+      
+      $.ajax({
+        type: 'post',
+        url: "/materials/"+mat_id+"/pickup_category",
+        data: {"product_id": '<%=@product.id%>'},
+        success: function(data) {
+           console.log(data);
+        }
+      });
+    });
+</script>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_24_102500) do
+ActiveRecord::Schema.define(version: 2018_05_24_224422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 2018_05_24_102500) do
     t.bigint "seller_id"
     t.string "name"
     t.string "slug"
+    t.decimal "price"
+    t.string "product_image"
     t.index ["material_id"], name: "index_products_on_material_id"
     t.index ["seller_id"], name: "index_products_on_seller_id"
   end
@@ -50,13 +52,9 @@ ActiveRecord::Schema.define(version: 2018_05_24_102500) do
     t.string "email"
     t.string "logo"
     t.string "slug"
-    t.bigint "material_id"
-    t.integer "product"
     t.text "description"
-    t.index ["material_id"], name: "index_sellers_on_material_id"
   end
 
   add_foreign_key "products", "materials"
   add_foreign_key "products", "sellers"
-  add_foreign_key "sellers", "materials"
 end

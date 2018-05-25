@@ -19,6 +19,10 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @products = Product.all
+    @seller = @product.seller
+    @sellers = Seller.all
+    @material = Material.all
   end
 
   # GET /products/new
@@ -28,7 +32,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
-    @materials = @product.materials
+    @material = @product.material
   end
 
   # POST /products
@@ -50,11 +54,8 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    delete_values_data
     respond_to do |format|
       if @product.update(product_params)
-        @product.update(seller_id: shop.id)
-        parse_product_attachment_params
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else
@@ -93,20 +94,7 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :material_id, :seller_id, :seller, :image, :product, :slug, :purity, :stock, :diameter, :length, :surface_area, :gram, :price, :description, :product_type, :shop_id,  :materials, :materials=>[], :tag_ids => [], :tags_attributes => [:id, :name], :application_ids => [], :applications_attributes => [:id, :name], :market_ids => [], :markets_attributes => [:id, :name], :material_ids => [], :materials_attributes => [:id, :name], :product_attachment_ids =>[], product_attachment_attributes: [:id, :cover,:_destroy], values_attributes: [:id, :value, :category_id, :_destroy, :check_box_type])
-    end
-
-    def check_product_owner
-      if current_user.shop.present?
-        if !current_user.shop.products.include? @product
-          flash[:notice] = "You Are not authorize user to edit this Product"
-          redirect_to products_path
-        else
-          false
-        end
-      else
-        false
-      end
+      params.require(:product).permit(:name, :material_id, :seller_id, :price, :seller, :product_image, :product_image_cache, :image, :product, :slug, :purity, :stock, :diameter, :length, :surface_area, :gram, :price, :description, :product_type, :shop_id,  :materials, :materials=>[], :tag_ids => [], :tags_attributes => [:id, :name], :application_ids => [], :applications_attributes => [:id, :name], :market_ids => [], :markets_attributes => [:id, :name], :material_ids => [], :materials_attributes => [:id, :name], :product_attachment_ids =>[], product_attachment_attributes: [:id, :cover,:_destroy], values_attributes: [:id, :value, :category_id, :_destroy, :check_box_type])
     end
 
 end

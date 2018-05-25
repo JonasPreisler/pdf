@@ -1,1 +1,67 @@
-<%= render 'form', seller: @seller %>
+<div class="container" id="seller-form">
+  <div class="image"></div>
+  <div class="frm"><br />
+      <div class="sub-title">STORE SETTINGS</div><br />
+        <%= form_for @seller, html: { multipart: true } do |form| %>
+          <% if @seller.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(seller.errors.count, "error") %> prohibited this seller from being saved:</h2>
+
+              <ul>
+              <% seller.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="field">
+            <%= form.text_field :name, placeholder: "Name", class: 'form-control', :required => true %>
+          </div>
+
+          <br />
+
+          <div class="field">
+            <%= form.text_area :description, placeholder: "Description (max 370 characters)", :maxlength => 370, class: 'form-control sell' %>
+          </div>
+          <br />
+
+          <div class="field">
+            <%= form.label :country_of_your_production_facility %>
+            <%= form.country_select :country, priority_countries: ["US", "GB", "DE", "CN", "JP"], placeholder: "Country", class: 'form-control' %>
+          </div>
+
+          <br />
+
+          <div class="input-group">
+            <span class="input-group-addon" id="basic-addon3" aria-describedby="basic-addon3">Include "https://"</span>
+            <%= form.text_field :website, placeholder: "https://yourwebsite.com", class: 'form-control' %>
+          </div>
+
+          <br />
+
+          <div class="field">
+            <%= form.text_field :email, placeholder: "Email", class: 'form-control'  %>
+          </div>
+
+          <br />
+
+          <div class="input-group">
+            <%= form.label :logo_300x300px %><br />
+            <%= form.file_field :logo %>
+            <%= form.hidden_field :logo_cache %>
+          </div>
+
+          <br />
+
+          <div class="actions">
+            <%= form.submit "Update settings", class: 'btn btn-primary' %>
+          </div>
+          <br />
+          <%= link_to 'Delete seller', seller_path(@seller),
+            data: {:confirm => 'Are you sure?'}, :method => :delete, class: 'btn btn-danger' %>
+        <% end %>
+      </form>
+  </div>
+</div>
+

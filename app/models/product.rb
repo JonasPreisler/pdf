@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
     extend FriendlyId
+    mount_uploader :product_image, ProductImageUploader
     friendly_id :name, use: [:slugged, :finders]
 	def should_generate_new_friendly_id?
 	  name_changed?

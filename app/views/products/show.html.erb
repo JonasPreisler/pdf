@@ -1,15 +1,17 @@
-
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
         <ol class="breadcrumb">
             <li>
-              <%= link_to @product.seller.name, @product.seller %>
+              <%= link_to "Home", root_path %>
             </li>
             <li>
-              <%= link_to @product.material.name, @product.material %>
+              <%= link_to @product.material.name, material_path(@product.material) %>
+            </li>
+            <li>
+              <%= link_to @product.seller.name, seller_path(@product.seller) %>
             </li>
             <li class="active">
-                <strong>Product detail</strong>
+                <strong><%= @product.name %></strong>
             </li>
         </ol>
     </div>
@@ -18,65 +20,118 @@
     </div>
 </div>
 
-<div class="wrapper wrapper-content animated fadeInRight">
 
 <div class="row">
-    <div class="col-lg-12">
+  <div class="col-xs-6 col-md-3 hide-mobile">
+    <%= render 'products/sidebar_product' %>
+  </div>
+  <div class="col-md-8">
+    <div class="nano-card ">
+      <%# SELLER PROFILE DESKTOP & TABLET %>
+      <div class="seller-hide-mobile">
+        <div class="col-xs-6 col-md-6">
+          <h1><strong><%= @product.name %></strong></h1>
+          Material: <%= link_to @product.material.name, @product.material, class: 'product-links' %>
+          
+          <div class="country">
+            Store: <%= link_to @product.seller.name, seller_path(@product.seller), class: 'product-links' %>
+            <br />
+            <div class="price">$<%= @product.price %></div>
+          </div>
+          <br />
+          <%#<% if @seller.material_id? %><%#= link_to @seller.material.name, @seller.material, class: 'sub-title' %><%# end %>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <% if @product.product_image? %>
+            <%= image_tag @product.product_image.url(:small), class: 'img-responsive' %>
+          <% else %>
+            <%= image_tag '/thumbnail.png', class: 'img-responsive' %>
+          <% end %>
+        </div>
 
-        <div class="ibox product-detail">
-            <div class="ibox-content">
+      </div>
+      <%# END OF SELLER PROFILE DESKTOP & TABLET %>
 
-                <div class="row">
-                    <div class="col-md-5">
+      <%# SELLER PROFILE MOBILE %>
+      <div class="seller-only-mobile">
+        <h1><strong><%= link_to @product.seller.name, seller_path(@product.seller) %></strong></h1>
+        <div class="country">
+          <%= @product.seller.country %>
+        </div>
+        <br />
+        <%#<% if @seller.material_id? %><%#= link_to @seller.material.name, @seller.material, class: 'sub-title' %><%# end %>
 
+        <center>
+          <% if @product.product_image? %>
+            <%= image_tag @product.product_image.url(:small), class: 'img-responsive' %>
+          <% else %>
+            <%= image_tag '/thumbnail.png', class: 'img-responsive' %>
+          <% end %>
+        </center>
+      </div>
+      <%# END OF SELLER PROFILE MOBILE %>
+      <hr>
 
-
-                        <!-- <div class="product-images">
-
-                            <div>
-                                <div class="image-imitation">
-                                    <%# if @product.product_attachments.any? %>
-                                      <div id="Img_carousel" class="slider-pro">
-                                          <div class="sp-slides">
-
-                                            <%# @product.product_attachments.each do |product_attachment| %>
-                                              <div class="sp-slide">
-                                                  <img alt="Image" class="sp-image" src="<%#= asset_path('loader.gif') %>" 
-                                                  data-src="<%#= asset_path(product_attachment.cover_url) %>" 
-                                                  data-small="<%#= asset_path(product_attachment.cover_url) %>" 
-                                                  data-medium="<%#= asset_path(product_attachment.cover_url) %>" 
-                                                  data-large="<%#= asset_path(product_attachment.cover_url) %>" 
-                                                  data-retina="<%#= asset_path(product_attachment.cover_url) %>">
-                                              </div>    
-                                            <%# end %>
-                                          </div>
-                                          <div class="sp-thumbnails">
-                                            <%# @product.product_attachments.each do |product_attachment| %>
-                                              <img alt="Image" class="sp-thumbnail" src="<%#= asset_path(product_attachment.cover_url(:slide_thumb)) %>">
-                                            <%# end %>
-                                          </div>
-                                      </div>  
-                                    <%# end %>
-                                    <%#= image_tag @product.product, class: 'product-image' %>
-                                </div>
-                            </div>
-                        </div> -->
-
-                    </div>
-                    <div class="col-md-7">
-
-                        <h2 class="font-bold m-b-xs">
-                          <%= @product.name %>
-                        </h2>
-                        <h4><%= link_to @product.material.name, material_path(@product.material)%></h4>
-                        <h4><%= link_to @product.seller.name, material_path(@product.seller)%></h4>
-                      
-                        
-                        </dl>
-                    </div>
-                </div>
-            </div>
     </div>
+    <div class="nano-card ">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Material</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @products.each do |product| %>
+            <tr>
+            <td><%= link_to product.seller.name, product %></td>
+            <td><%= link_to product.material.name, product.material %></td>
+            <td><%= product.price if @product.price %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+<div class="row">
+
+  <div class="col-xs-6 col-md-3">
+
+    </div>
+    <div class="col-xs-12 col-md-8">
+      <br />
+      <br />
+
+      <div class="sub-title">OTHER SELLERS</div>
+      <br />      
+
+      <% @sellers.each do |seller| %>
+        <div class="col-sm-4 col-md-4">
+          <div class="thumbnail">
+            <% if seller.logo? %>
+              <%= link_to (image_tag seller.logo.url(:small)), seller, class: 'seller-preview' %>
+            <% else %>
+              <%= link_to (image_tag '/thumbnail.png'), seller, class: 'seller-preview' %>
+            <% end %>
+            <div class="caption">
+              <h4 style="font-size:16px;"><%= link_to seller.name, seller %></h4>
+              <div style="font-size:12px;"><%= link_to seller.country, seller %></div>
+            </div>
+            <div class="panel-footer">
+              <div class="row">
+                <div class="col-xs-8 col-sm-6">
+                  &#9889; rating
+                </div>
+                <div class="col-xs-4 col-sm-6">
+                  <%= link_to "Visit", seller %>
+                </div>
+              </div>                  
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-

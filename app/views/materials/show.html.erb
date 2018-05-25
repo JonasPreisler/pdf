@@ -15,54 +15,72 @@
     </div>
 
     <div class="col-md-8 nano-card">
-      <div class="col-xs-6 col-md-6 col-sm-6">
-        <h1><strong><%= @material.name.upcase %></strong></h1>
-        <br /><%#= @material.sellers.seller_name %>
-        <div class="sub-title">What is <%= @material.name %>?</div>
+      <div class="material-hide-mobile">
+        <div class="col-xs-6 col-md-6 col-sm-6">
+          <h1><strong><%= @material.name.upcase %></strong></h1>
+          <br /><%#= @material.sellers.seller_name %>
+          <div class="sub-title">What is <%= @material.name %>?</div>
+          <br />
+          <div class="description-text"><%= simple_format(@material.description) %></div>
         <br />
-        <div class="description-text"><%= simple_format(@material.description) %></div>
-      <br />
+        </div>
+
+        <div class="col-xs-6 col-md-6">
+          <% if @material.image? %>
+            <%= image_tag @material.image.url(:small), class: 'img-responsive' %>
+          <% else %>
+            <%= image_tag '/thumbnail.png' %>
+          <% end %>
+        </div>
       </div>
 
-      <div class="col-xs-6 col-md-6">
-        <% if @material.image? %>
-          <%= image_tag @material.image.url(:small), class: 'img-responsive' %>
-        <% else %>
-          <%= image_tag '/thumbnail.png' %>
-        <% end %>
+      <div class="seller-only-mobile">
+        <center>
+        <h1><strong><%= @material.name.upcase %></strong></h1>
+        <br />
+        
+          <% if @material.image? %>
+            <%= image_tag @material.image.url(:small), class: 'img-responsive' %>
+          <% else %>
+            <%= image_tag '/thumbnail.png', class: 'img-responsive' %>
+          <% end %>
+        <br />
+        </center>
+        <div class="description-text">
+          <% if @material.description? %>
+            <%= @material.description %>
+          <% end %>
+        </div>
       </div>
         
-      <hr>
-      <div class="sub-title">Where can you buy <%= @material.name %>s?</div>
+    <hr>
+
+    </div>
+    <div class="col-xs-4 col-md-2  hide-mobile">
+      <%= render 'materials/random_seller_materials' %>
+    </div>
+
+    <div class="col-md-8 nano-card">
       <table class="table table-hover">
         <thead>
-            <%# @products.each do |product| %>
-              <tr>
-                <th><%#= link_to @material.products.name, product_path(product) %></th>
-              </tr>
-            <%# end %>
-        </thead>
-
-        <thead>
           <tr>
-            <th>Country</th>
-            <th>Webshop</th>
+            <th>Product</th>
             <th>Company</th>
+            <th>Price</th>
           </tr>
         </thead>
 
         <tbody>
-            <tr>
-            <td>Hello</td>
-            <td>Hello</td>
-            <td>Hello</td>
-            </tr>
+          <% @products.each do |product| %>
+          <tr>
+            <td><%= link_to product.name, product_path(product) %></td>
+            <td><%= link_to product.seller.name, product.seller %> (<%= link_to product.seller.country, product.seller %>)</td>
+            <td><%= link_to product.price, product_path(product) %></td>
+          </tr>
+          <% end %>
         </tbody>
       </table>
       <%= link_to "Become a seller", new_seller_path, class: 'btn btn-primary' %>
-    </div>
-    <div class="col-xs-4 col-md-2  hide-mobile">
-      <%= render 'sellers/random_seller' %>
     </div>
   </div>
 </div>

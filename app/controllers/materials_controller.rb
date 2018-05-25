@@ -10,7 +10,7 @@ class MaterialsController < ApplicationController
   # GET /materials/1
   # GET /materials/1.json
   def show
-    @sellers = Seller.all
+    @products = @material.products
     @materials = Material.all.order('name ASC')
     @material = Material.friendly.find(params[:id])
     @random_seller = Seller.where.not(id: @seller).order("RANDOM()").first
@@ -74,6 +74,6 @@ class MaterialsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def material_params
-      params.require(:material).permit(:name, :description, :image, :seller, :product)
+      params.require(:material).permit(:name, :description, :image, :image_cache, :seller, :product)
     end
 end

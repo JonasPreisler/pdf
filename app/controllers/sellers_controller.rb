@@ -10,6 +10,7 @@ class SellersController < ApplicationController
   # GET /sellers/1
   # GET /sellers/1.json
   def show
+    @products = @seller.products
     @sellers = Seller.all
     @seller = Seller.friendly.find(params[:id])
     @random_seller = Seller.where.not(id: @seller).order("RANDOM()").first
@@ -78,6 +79,6 @@ class SellersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def seller_params
-      params.require(:seller).permit(:name, :products, :material, :description, :materials, :logo_cache, :country, :website, :email, :logo, :material_id, :material_name)
+      params.require(:seller).permit(:name, :products, :description, :materials, :logo_cache, :country, :website, :email, :logo, :material_name)
     end
 end
