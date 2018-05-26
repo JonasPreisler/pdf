@@ -6,13 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-admin = User.create(
-    :name => "admin",
-    :email => "jonas@nanodex.com",
-    :password => "JonasP2",
-    :password_confirmation => "JonasP2"
-)
-admin.toggle!(:admin)
 
 ferrofluid = Material.create!(name: 'Ferrofluid')
 fullerene = Material.create!(name: 'Fullerene')
