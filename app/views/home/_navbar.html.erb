@@ -17,6 +17,24 @@
         <%= link_to "Products", products_path, class: 'nano-list nano-nav' %>
         <%= link_to "Materials", materials_path, class: 'nano-list nano-nav' %>
         <%= link_to "Sellers", sellers_path, class: 'nano-list nano-nav' %>
+        <% if user_signed_in? %>
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Settings
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><%= link_to 'Create store', new_seller_path, class: 'nano-list nano-nav' %></li>
+              <li><%= link_to 'Account settings', edit_user_registration_path, class: 'nano-list nano-nav' %></li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to 'log out', destroy_user_session_path, method: :delete, class: 'nano-list nano-nav'  %></li>
+            </ul>
+          </div>
+          <% else %>
+              <%= link_to 'log in', new_user_session_path, class: 'nano-list nano-nav' %>
+        <% end %>                        
+
+
       </ul>
     </div>
   </div>

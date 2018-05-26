@@ -1,16 +1,18 @@
 class SellersController < ApplicationController
+  before_action :authenticate_user! , only: [:create, :edit, :update, :destroy]
   before_action :set_seller, only: [:show, :edit, :update, :destroy]
+  before_action :check_seller_owner, only:[:edit, :update]
 
   # GET /sellers
   # GET /sellers.json
   def index
-    @sellers = Seller.all
+    @sellers = Seller.all.order(:created_at).page(params[:page])
   end
 
   # GET /sellers/1
   # GET /sellers/1.json
   def show
-    @products = @seller.products
+    @products = @seller.products.order(:created_at).page(params[:page])
     @sellers = Seller.all
     @seller = Seller.friendly.find(params[:id])
     @random_seller = Seller.where.not(id: @seller).order("RANDOM()").first
@@ -19,7 +21,11 @@ class SellersController < ApplicationController
 
   # GET /sellers/new
   def new
-    @seller = Seller.new
+    if current_user
+      @seller = Seller.new
+    else
+      redirect_to sellers_path
+    end
   end
 
   # GET /sellers/1/edit
@@ -66,11 +72,6 @@ class SellersController < ApplicationController
     end
   end
 
-  def country_name
-    country = ISO3166::Country[country_code]
-    country.translations[I18n.locale.to_s] || country.name
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_seller
@@ -79,6 +80,14 @@ class SellersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def seller_params
-      params.require(:seller).permit(:name, :products, :description, :materials, :logo_cache, :country, :website, :email, :logo, :material_name)
+      params.require(:seller).permit(:name, :products, :description, :materials, :logo_cache, :country, :website, :email, :logo, :material_name, :user_id)
     end
+
+    def check_seller_owner
+      if current_user.seller != @seller
+        flash[:notice] = "You are not an authorized user to edit this store"
+        redirect_to sellers_path
+      end
+    end
+
 end

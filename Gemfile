@@ -24,6 +24,8 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'fog'
 gem 'chosen-rails'
 gem 'rspec', '~> 3.7'
+gem 'rails_admin'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

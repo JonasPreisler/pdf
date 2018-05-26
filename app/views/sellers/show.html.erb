@@ -11,9 +11,10 @@
           <% if @seller.country? %><%= @seller.country%><% end %>
         </div>
         <% if @seller.website? %><%= link_to "Website", @seller.website, class: 'sub-title', target: :_blank %><% end %>
+        <br />
         <div class="description-text">
           <% if @seller.description? %>
-            <%= @seller.description %>
+            <%= simple_format @seller.description %>
           <% end %>
         </div>
         <br />
@@ -38,7 +39,6 @@
       </div>
       <% if @seller.website? %><%= link_to "Website", @seller.website, class: 'sub-title', target: :_blank %><% end %>
       <br />
-      <br />
       <div class="description-text">
         <% if @seller.description? %>
           <%= @seller.description %>
@@ -60,7 +60,6 @@
   </div>
   <div class="col-md-9 nano-card">
     <%# SELLER PROFILE DESKTOP & TABLET %>
-    <div class="">PRODUCTS SOLD BY <%= @seller.name.upcase %></div>
     <table class="table table-hover">
       <thead>
         <tr>
@@ -71,15 +70,21 @@
       </thead>
 
       <tbody>
-        <% @products.each do |product| %>
+      <div class="sub-title"><%= @seller.name.upcase %> PRODUCTS</div>
+        <% @products.limit(10).each do |product| %>
           <tr>
           <td><%= link_to product.name, product_path(product) %></td>
           <td><%= link_to product.material.name, product.material %></td>
-          <td><%= product.material.price if product.price %></td>
+          <td><%= product.price if product.price %></td>
         <% end %>
           </tr>
       </tbody>
     </table>
+      <div class="paginate-parent">
+          <div class="paginate">
+              <%= paginate @products %>
+          </div>
+      </div>
 
   </div>
 <div class="row">

@@ -6,4 +6,6 @@ class Seller < ApplicationRecord
 	  name_changed?
 	end
     has_many :products, dependent: :destroy
+    belongs_to :user
+    paginates_per 12
 end

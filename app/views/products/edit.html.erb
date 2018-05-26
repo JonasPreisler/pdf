@@ -1,11 +1,146 @@
-<div class="container" id="material-form">
+<div class="container" id="product-form">
   <div class="image"></div>
   <div class="frm">
-	<%= render 'form' %>
-	<br />
-	  <%= link_to 'Delete product', product_path(@product), data: {:confirm => 'Are you sure you want to delete this product?'}, :method => :delete, class: 'btn btn-danger' %>
+        <%= form_for @product, html: { multipart: true } do |form| %>    
+          <% if @product.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+              <ul>
+              <% product.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <br />
+          <strong style="color:#aaa;font-size:20px;">Add new product</strong>
+
+          <div class="actions" style="float:right;">
+            <%= form.submit "Update product", class: 'btn btn-primary' %>
+          </div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <div class="field">
+            <%= form.text_field :name, type: "text", class: "form-control", placeholder: "Product title", :required => true %>
+          </div>
+
+          <br />
+
+          <div class="input-group">
+            <span class="input-group-addon" id="basic-addon3" aria-describedby="basic-addon3">$</span>
+            <%= form.number_field :price, type: "decimal", placeholder: "Price", class: 'form-control', :required => true  %>
+          </div>
+
+          <br />
+          <strong style="color:#aaa;float:left;">Grams or mililiters:</strong>
+          <br />
+          <div style="font-size:10px;color:#9a9a9a;">Please only input a number in ONE of the boxes.</div>
+          <br />
+
+          <div class="col-md-6">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon3" aria-describedby="basic-addon3">g</span>
+              <%= form.number_field :gram, type: "decimal", placeholder: "Gram", class: 'form-control'  %>
+            </div>
+          </div>
+
+          <div class="col-md-6">  
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon3" aria-describedby="basic-addon3">mL</span>
+              <%= form.number_field :mililiter, type: "decimal", placeholder: "Mililiter", class: 'form-control'  %>
+            </div>
+          </div>
+
+          <hr>
+
+          <div style="font-size:10px;color:#9a9a9a;">What material-category is the product belonging to?</div>
+          <div class="field">
+            <%= form.select :material_id,  Material.all.map{ |m| [m.name,m.id]}, {}, placeholder: "graphene, nanotubes, etc...", class: "form-control" %>
+          </div>
+
+          <br />
+          
+          <div class="field">
+            <%= form.select :seller_id,  Seller.all.map{ |m| [m.name,m.id]}, {}, placeholder: "Select seller", class: "form-control" %>
+          </div>
+
+          <br />
+          <div class="input-group">
+            <%= form.file_field :product_image %>
+            <%= form.hidden_field :product_image_cache %>
+          </div>
+          <div style="font-size:10px;color:#9a9a9a;">Product image 300x300px (optional)</div>
+
+          <br />
+
+          <strong style="color:#aaa;float:left;">Product specs (optional):</strong>
+          <br />
+          <br />
+
+          <div class="col-md-6">  
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon3" aria-describedby="basic-addon3">nm</span>
+              <%= form.number_field :length, type: "decimal", placeholder: "Nanometer", class: 'form-control'  %>
+            </div>
+          </div>
+
+          <div class="col-md-1" style="font-size:30px;color:#9a9a9a;">
+            ~
+          </div>
+
+          <div class="col-md-5">  
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon3" aria-describedby="basic-addon3">nm</span>
+              <%= form.number_field :length_two, type: "decimal", placeholder: "Nanometer", class: 'form-control'  %>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="field">
+            <%= form.select(:solvent) do %>
+              <% [['None', 1], ['Water', 2], ['Powder', 2]].each do |c| -%>
+                <%= content_tag(:option, c.first, value: c.last) %>
+              <% end %>
+            <% end %> <span style="color:#9a9a9a;">(solvent)</span>
+          </div>
+
+          <br />
+
+          <div class="input-group">
+            <span class="input-group-addon" id="basic-addon3" aria-describedby="basic-addon3">ø</span>
+            <%= form.number_field :diameter, type: "decimal", placeholder: "Diameter", class: 'form-control', :required => true  %>
+          </div>
+
+          <br />
+
+          <div class="input-group">
+            <span class="input-group-addon" id="basic-addon3" aria-describedby="basic-addon3">%</span>
+            <%= form.number_field :purity, type: "decimal", placeholder: "Purity", class: 'form-control', :required => true  %>
+          </div>
+
+          <br />
+
+          <div class="input-group">
+            <span class="input-group-addon" id="basic-addon3" aria-describedby="basic-addon3">μm</span>
+            <%= form.number_field :surface_area, type: "decimal", placeholder: "Surface area", class: 'form-control', :required => true  %>
+          </div>
+
+          <br />
+          <br />
+          <br />
+          <div class="actions" style="float:right;">
+            <%= form.submit "Update product", class: 'btn btn-primary' %>
+          </div>
+
+        <% end %>
+      </form>
   </div>
 </div>
+
 
 
 <div class="row">
@@ -24,27 +159,3 @@
 </nano></div>
   <div class="col-md-4 col-sm-4"></div>
 </div>
-
-
-<script type="text/javascript">
-    $( "#product_materials" ).select2();
-    //$( "#product_tag_ids_chosen" ).select2();  
-</script>
-
-
-
-<script type="text/javascript">
-    $('#product_materials').change(function(argument) {
-      console.log($(this)[0].value)
-      var mat_id = $(this)[0].value;
-      
-      $.ajax({
-        type: 'post',
-        url: "/materials/"+mat_id+"/pickup_category",
-        data: {"product_id": '<%=@product.id%>'},
-        success: function(data) {
-           console.log(data);
-        }
-      });
-    });
-</script>

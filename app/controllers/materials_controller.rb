@@ -7,6 +7,7 @@ class MaterialsController < ApplicationController
     @materials = Material.all.order('name ASC')
   end
 
+
   # GET /materials/1
   # GET /materials/1.json
   def show

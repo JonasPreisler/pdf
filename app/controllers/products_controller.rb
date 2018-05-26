@@ -8,12 +8,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    if params[:format] == "json"
-      products = Product.all.joins(:tags).where("tags.name like ?", "%#{params[:term]}%").limit(10).order("products.name").distinct.pluck("products.name")
-      render json: products.sort_by(&:downcase).as_json
-    else
-      @products = Product.all
-    end
+    @products = Product.all.order(:created_at).page(params[:page])
   end
 
   # GET /products/1
@@ -94,7 +89,7 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :material_id, :seller_id, :price, :seller, :product_image, :product_image_cache, :image, :product, :slug, :purity, :stock, :diameter, :length, :surface_area, :gram, :price, :description, :product_type, :shop_id,  :materials, :materials=>[], :tag_ids => [], :tags_attributes => [:id, :name], :application_ids => [], :applications_attributes => [:id, :name], :market_ids => [], :markets_attributes => [:id, :name], :material_ids => [], :materials_attributes => [:id, :name], :product_attachment_ids =>[], product_attachment_attributes: [:id, :cover,:_destroy], values_attributes: [:id, :value, :category_id, :_destroy, :check_box_type])
+      params.require(:product).permit(:name, :material_id, :seller_id, :price, :seller, :product_image, :product_image_cache, :image, :product, :slug, :purity, :stock, :diameter, :length, :surface_area, :gram, :price, :description, :solvent, :layer, :length_two, :mililiter, :product_type, :shop_id,  :materials, :materials=>[], :tag_ids => [], :tags_attributes => [:id, :name], :application_ids => [], :applications_attributes => [:id, :name], :market_ids => [], :markets_attributes => [:id, :name], :material_ids => [], :materials_attributes => [:id, :name], :product_attachment_ids =>[], product_attachment_attributes: [:id, :cover,:_destroy], values_attributes: [:id, :value, :category_id, :_destroy, :check_box_type])
     end
 
 end

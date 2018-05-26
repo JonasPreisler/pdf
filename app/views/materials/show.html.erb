@@ -5,6 +5,8 @@
     <div class="col-xs-4 col-md-2 hide-mobile">
         <table>
           <tbody>
+          <div class="sub-title">All materials</div>
+          <br />
             <% @materials.each do |material| %>
               <tr>
                 <td><%= link_to material.name, material, class: 'nano-list' %></td>
@@ -71,7 +73,7 @@
         </thead>
 
         <tbody>
-          <% @products.each do |product| %>
+          <% @products.limit(10).each do |product| %>
           <tr>
             <td><%= link_to product.name, product_path(product) %></td>
             <td><%= link_to product.seller.name, product.seller %> (<%= link_to product.seller.country, product.seller %>)</td>

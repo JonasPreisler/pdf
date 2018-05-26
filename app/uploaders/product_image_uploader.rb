@@ -37,12 +37,6 @@ class ProductImageUploader < CarrierWave::Uploader::Base
   version :small do
     process resize_to_fill: [300, 300]
   end
-  version :thumb do
-    process resize_to_fit: [180, 180]
-  end
-  version :thumb do
-    process resize_to_fill: [180, 180]
-  end
   version :mini do
     process resize_to_fit: [80, 80]
   end

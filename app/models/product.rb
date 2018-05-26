@@ -8,6 +8,7 @@ class Product < ApplicationRecord
     belongs_to :seller, optional: true
     belongs_to :material, optional: true
 
+    paginates_per 20
 
     def materials_objects
       Material.where(id: self.materials.reject(&:empty?)).map(&:name).join(",")
@@ -15,5 +16,4 @@ class Product < ApplicationRecord
     def sellers_objects
       Seller.where(id: self.sellers.reject(&:empty?)).map(&:name).join(",")
     end
-
 end

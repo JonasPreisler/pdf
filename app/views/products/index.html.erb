@@ -1,70 +1,55 @@
+<div class="nano-card">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th data-toggle="true">Product</th>
+            <th data-hide="all">Material</th>
+            <th data-hide="phone">Supplier</th>
+            <th data-hide="all" class="seller-hide-mobile">Purity</th>
+            <th data-hide="all" class="hide-mobile">Length</th>
+            <th data-hide="all" class="hide-mobile">Diameter</th>
+            <th data-hide="phone">Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @products.limit(50).each do |product| %>
+            <tr>
+                <td>
+                    <strong><%= link_to product.name, product_path(product) %></strong>
+                    <span class="index-comment"><%= "(#{product.gram}g)" if product.gram %><%= "(#{product.mililiter}mL)" if product.mililiter%></span>
+                </td>
+                <td>
+                    <%= link_to product.material.name, material_path(product.material) %>
+                </td>
+                <td>
+                    <%= link_to (image_tag product.seller.logo.url(:micro)), seller_path(product.seller) %>
+                    <%= link_to product.seller.name, seller_path(product.seller) if product.seller %>
+                    <span class="index-comment seller-hide-mobile">(<%= product.seller.country if product.seller %>)</span>
+                </td>
+                <td class="seller-hide-mobile">
+                    <%= "#{product.purity}%" if product.purity %>
+                </td>
+                 <td class="hide-mobile">
+                    <%= "#{product.length}nm ~" if product.length %> <%= "#{product.length_two}nm" if product.length_two %>
+                </td>
+                 <td class="hide-mobile">
+                    <%= "Ø #{product.diameter}" if product.diameter %>
+                </td>
 
+                 <td>
+                    $<%= product.price if product.price %>
+                </td>
 
-<div class="row">
-    <div class="col-lg-12">
-        <div class="ibox">
-            <div class="ibox-content">
-                <div class="col-sm-6 search-right">
-                    <div class="form-group">
-                        <%= text_field_tag :term, params[:term], placeholder: "Search Product", class: 'form-control' %>
-                    </div>
-                </div>
+                </td>
 
-                <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
-                    <thead>
-                    <tr>
-                        <th data-toggle="true">Title</th>
-                        <th data-hide="phone">Material</th>
-                        <th data-hide="phone">Supplier</th>
-                        <th data-hide="all">Price</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <% @products.each do |product| %>
-                        <tr>
-                            <td>
-                                <%= product.name %>
-                            </td>
-                            <td>
-                                <%= link_to product.material.name, material_path(product.material) %>
-                            </td>
-                            <td>
-                                <%= link_to product.seller.name, seller_path(product.seller) if product.seller %>
-                            </td>
-                             <td>
-                                <%= product.seller.country if product.seller %>
-                            </td>
-
-                            </td>
-
-                            <td>
-                        </tr>
-                    <% end %>
-
-                    </tbody>
-                </table>
-
-            </div>
+                <td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+    <div class="paginate-parent">
+        <div class="paginate">
+            <%= paginate @products %>
         </div>
     </div>
 </div>
-
-
-</div>
-
-<% content_for :javascript do %>
-
-<script type="text/javascript">
-
-
-$(function() {
-
-    $('.footable').footable();
-
-});
-
-</script>
-
-<% end %>
-
-

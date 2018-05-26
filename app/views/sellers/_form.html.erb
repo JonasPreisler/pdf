@@ -44,6 +44,8 @@
             <%= form.text_field :email, placeholder: "Email", class: 'form-control'  %>
           </div>
           <br />
+          <%= form.hidden_field :user_id,:value=>current_user.id %>
+          <br />
 
           <div class="input-group">
             <%= form.label :logo_300x300px %><br />
