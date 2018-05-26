@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_26_080440) do
+ActiveRecord::Schema.define(version: 2018_05_26_094453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 2018_05_26_080440) do
     t.bigint "seller_id"
     t.string "name"
     t.string "slug"
-    t.datetime "created_at"
     t.decimal "price"
     t.string "product_image"
     t.decimal "gram", precision: 15, scale: 2
@@ -51,6 +50,7 @@ ActiveRecord::Schema.define(version: 2018_05_26_080440) do
     t.string "layer"
     t.decimal "length_two", precision: 15, scale: 2
     t.decimal "mililiter", precision: 15, scale: 2
+    t.datetime "created_at"
     t.index ["material_id"], name: "index_products_on_material_id"
     t.index ["seller_id"], name: "index_products_on_seller_id"
   end
