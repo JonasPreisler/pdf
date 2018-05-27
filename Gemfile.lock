@@ -70,6 +70,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    chartkick (2.3.4)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     chosen-rails (1.8.3)
@@ -270,6 +271,8 @@ GEM
       activerecord (>= 4.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    groupdate (4.0.1)
+      activesupport (>= 4.2)
     haml (5.0.4)
       temple (>= 0.8.0)
       tilt
@@ -338,7 +341,11 @@ GEM
     orm_adapter (0.5.0)
     ovirt-engine-sdk (4.2.4)
       json (>= 1, < 3)
+    pdf-core (0.7.0)
     pg (1.0.0)
+    prawn (2.2.2)
+      pdf-core (~> 0.7.0)
+      ttfunk (~> 1.5)
     public_suffix (3.0.2)
     puma (3.11.4)
     rack (2.0.5)
@@ -454,6 +461,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.8)
     trollop (2.1.2)
+    ttfunk (1.5.1)
     turbolinks (5.1.1)
       turbolinks-source (~> 5.1)
     turbolinks-source (5.1.0)
@@ -488,6 +496,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15, < 4.0)
   carrierwave (~> 1.0)
+  chartkick
   chosen-rails
   chromedriver-helper
   coffee-rails (~> 4.2)
@@ -495,6 +504,7 @@ DEPENDENCIES
   devise (~> 4.4, >= 4.4.3)
   fog
   friendly_id (~> 5.1.0)
+  groupdate
   httparty (~> 0.16.2)
   jbuilder (~> 2.5)
   jquery-rails
@@ -502,6 +512,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   mini_magick (~> 4.8)
   pg
+  prawn (~> 2.2, >= 2.2.2)
   puma (~> 3.11)
   rails (~> 5.2.0)
   rails_admin

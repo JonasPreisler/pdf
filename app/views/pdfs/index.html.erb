@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pdfs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Amount of users</th>
+      <th>Business name</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pdfs.each do |pdf| %>
+      <tr>
+        <td><%= pdf.amount_of_users %></td>
+        <td><%= pdf.business_name %></td>
+        <td><%= pdf.date %></td>
+        <td><%= link_to 'Show', pdf %></td>
+        <td><%= link_to 'Edit', edit_pdf_path(pdf) %></td>
+        <td><%= link_to 'Destroy', pdf, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pdf', new_pdf_path %>

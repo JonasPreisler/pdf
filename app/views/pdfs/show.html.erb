@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Amount of users:</strong>
+  <%= @pdf.amount_of_users %>
+</p>
+
+<%= line_chart Bot_user.group_by_day(:created_at).count %>
+
+<p>
+  <strong>Business name:</strong>
+  <%= @pdf.business_name %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @pdf.date %>
+</p>
+
+<%= link_to "Download PDF", pdf_path(@pdf), format: "pdf", class: 'btn btn-primary' %>
+
+<%= link_to 'Edit', edit_pdf_path(@pdf) %> |
+<%= link_to 'Back', pdfs_path %>

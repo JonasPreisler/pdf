@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @bot_user.first_name %>
+</p>
+<p>
+  <strong>Messenger User ID:</strong>
+  <%= @bot_user.messenger_user_id %>
+</p>
+<p>
+  <strong>First name:</strong>
+  <%= @bot_user.first_name %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_bot_user_path(@bot_user) %> |
+<%= link_to 'Back', bot_users_path %>
