@@ -6,17 +6,17 @@ module Api
       skip_before_action :verify_authenticity_token
 
       def index
-        bot_users = Bot_user.bot_user('created_at DESC');
+        bot_users = BotUser.bot_user('created_at DESC');
         render json: {status: 'SUCCESS', message:'Loaded bot_user', data:bot_users},status: :ok
       end
 
       def show
-        bot_user = Bot_user.find(params[:id])
+        bot_user = BotUser.find(params[:id])
         render json: {status: 'SUCCESS', message:'Loaded bot_user', data:bot_user},status: :ok
       end
 
       def create
-        bot_user = Bot_user.new(bot_user_params)
+        bot_user = BotUser.new(bot_user_params)
         if bot_user.save
           render json: {status: 'SUCCESS', message:'Saved bot_user', data:bot_user },status: :ok
         else
