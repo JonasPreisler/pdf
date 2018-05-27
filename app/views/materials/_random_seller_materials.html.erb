@@ -1,6 +1,4 @@
-<strong>OTHER SELLERS</strong>
-<br />
-<br />
+<div class="sub-title">Other sellers</div>
 <div class="thumbnail">
   <% if @random_seller.logo? %>
     <%= link_to (image_tag @random_seller.logo.url(:sidebar)), seller_path(@random_seller), class: 'seller-preview' %>
@@ -13,12 +11,12 @@
   </div>
   <div class="panel-footer">
     <div class="row">
-      <div class="col-xs-8 col-sm-6">
-        &#9889; rating
-      </div>
-      <div class="col-xs-4 col-sm-6">
-        <%= link_to "Visit", @random_seller %>
-      </div>
+      <%#div class="col-xs-8 col-sm-6">
+        <% &#9889; rating %>
+      <%#/div>
+      <%#div class="col-xs-4 col-sm-6"%>
+      <center><%= link_to "Visit", @random_seller, class: 'white-text' %></center>
+      <%#/div%>
     </div>                  
   </div>
 </div>

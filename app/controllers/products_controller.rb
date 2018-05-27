@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @products = Product.all
+    @products = Product.all.order(:created_at).page(params[:page])
     @seller = @product.seller
     @sellers = Seller.all
     @material = Material.all
@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-     @product = Product.new   
+     @product = Product.new
   end
 
   # GET /products/1/edit
@@ -34,7 +34,6 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -84,7 +83,7 @@ class ProductsController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = Product.friendly.find(params[:id])
+      @product = Product.friendly.find(params[:id]) or not_found if @product.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

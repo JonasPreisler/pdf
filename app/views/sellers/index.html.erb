@@ -8,17 +8,17 @@
           <%= link_to (image_tag '/thumbnail.png'), seller, class: 'seller-preview' %>
         <% end %>
         <div class="caption">
-          <h4 style="font-size:16px;"><%= link_to seller.name, seller %></h4>
+          <h4 style="font-size:16px;"><%= link_to seller.name.truncate(20), seller %></h4>
           <div style="font-size:12px;"><%= seller.country %></div>
         </div>
         <div class="panel-footer">
           <div class="row">
-            <div class="col-xs-8 col-sm-6">
-              <%# &#9889; rating %>
-            </div>
-            <div class="col-xs-4 col-sm-6">
-              <%= link_to "Visit", seller %>
-            </div>
+            <%#div class="col-xs-8 col-sm-6">
+              <% &#9889; rating %>
+            <%#/div>
+            <%#div class="col-xs-4 col-sm-6"%>
+              <center><%= link_to "Visit", seller, class: 'white-text' %></center>
+            <%#/div%>
           </div>                  
         </div>
       </div>

@@ -7,6 +7,9 @@
     <div class="seller-hide-mobile">
       <div class="col-xs-6 col-md-6">
         <h1><strong><%= @seller.name.upcase %></strong></h1>
+        <% if current_user == @seller %>
+        <%= link_to 'new product', new_product_path %>
+        <% end %>
         <div class="country">
           <% if @seller.country? %><%= @seller.country%><% end %>
         </div>
@@ -113,12 +116,12 @@
             </div>
             <div class="panel-footer">
               <div class="row">
-                <div class="col-xs-8 col-sm-6">
-                  &#9889; rating
-                </div>
-                <div class="col-xs-4 col-sm-6">
-                  <%= link_to "Visit", seller %>
-                </div>
+                <%#div class="col-xs-8 col-sm-6">
+                  <% &#9889; rating %>
+                <%#/div>
+                <%#div class="col-xs-4 col-sm-6"%>
+                <center><%= link_to "Visit", @random_seller, class: 'white-text' %></center>
+                <%#/div%>
               </div>                  
             </div>
           </div>

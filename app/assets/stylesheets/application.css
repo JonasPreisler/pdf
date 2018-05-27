@@ -16,8 +16,18 @@
  */
 
 .logo {
-	width: 200px;
+	width: 160px;
 	padding-top: 8px;
+}
+
+/* smaller image on mobile */
+
+@media (max-width: 420px) {
+  .logo {
+    width: 50%;
+    padding-left: 10px;
+    padding-top: 13px;
+  }
 }
 
 .container-2 {

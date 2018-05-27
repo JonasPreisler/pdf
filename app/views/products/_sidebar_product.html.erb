@@ -1,6 +1,4 @@
-About the company
-<br />
-<br />
+<div class="sub-title">About the company</div>
 <div class="thumbnail">
   <% if @seller.logo? %>
     <%= link_to (image_tag @seller.logo.url(:sidebar)), seller_path(@seller), class: 'seller-preview' %>
@@ -13,12 +11,12 @@ About the company
   </div>
   <div class="panel-footer">
     <div class="row">
-      <div class="col-xs-8 col-sm-6">
-        &#9889; rating
-      </div>
-      <div class="col-xs-4 col-sm-6">
-        <%= link_to "Visit", @seller %>
-      </div>
+      <%#div class="col-xs-8 col-sm-6">
+        <% &#9889; rating %>
+      <%#/div>
+      <%#div class="col-xs-4 col-sm-6"%>
+      <center><%= link_to "Visit", @random_seller, class: 'white-text' %></center>
+      <%#/div%>
     </div>                  
   </div>
 </div>

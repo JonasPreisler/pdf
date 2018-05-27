@@ -29,6 +29,7 @@
 
           <br />
 
+
           <div class="input-group">
             <span class="input-group-addon" id="basic-addon3" aria-describedby="basic-addon3">$</span>
             <%= form.number_field :price, type: "decimal", placeholder: "Price", class: 'form-control', :required => true  %>
@@ -62,10 +63,11 @@
           </div>
 
           <br />
-          
-          <div class="field">
-            <%= form.select :seller_id,  Seller.all.map{ |m| [m.name,m.id]}, {}, placeholder: "Select seller", class: "form-control" %>
-          </div>
+
+          <%= form.hidden_field :seller_id, :value => current_user.seller.id %>
+
+
+
 
           <br />
           <div class="input-group">
@@ -76,22 +78,24 @@
 
           <br />
 
-          <strong style="color:#aaa;float:left;">Product specs (optional):</strong>
+          <div class="line-break"></div>
+
+          <strong style="color:#aaa;font-size:20px;">Product specs (OPTIONAL)</strong>
           <br />
           <br />
 
-          <div class="col-md-6">  
+          <div class="col-md-6 col-sm-6">  
             <div class="input-group">
               <span class="input-group-addon" id="basic-addon3" aria-describedby="basic-addon3">nm</span>
               <%= form.number_field :length, type: "decimal", placeholder: "Nanometer (from)", class: 'form-control'  %>
             </div>
           </div>
 
-          <center><div class="col-md-1" style="font-size:30px;color:#9a9a9a;">
+          <center><div class="col-md-1 col-sm-1" style="font-size:30px;color:#9a9a9a;">
             ~
           </div></center>
 
-          <div class="col-md-5">  
+          <div class="col-md-5 col-sm-5">  
             <div class="input-group">
               <span class="input-group-addon" id="basic-addon3" aria-describedby="basic-addon3">nm</span>
               <%= form.number_field :length_two, type: "decimal", placeholder: "Nanometer (to)", class: 'form-control'  %>
@@ -102,10 +106,10 @@
 
           <div class="field">
             <%= form.select(:solvent) do %>
-              <% [['None', 1], ['Water', 1], ['Powder', 3]].each do |c| -%>
+              <% [['Select solvent', 1], ['Water', 1], ['Powder', 3]].each do |c| -%>
                 <%= content_tag(:option, c.first, value: c.last) %>
               <% end %>
-            <% end %> <span style="color:#9a9a9a;">(solvent)</span>
+            <% end %>
           </div>
 
           <br />
@@ -139,23 +143,4 @@
         <% end %>
       </form>
   </div>
-</div>
-
-
-
-<div class="row">
-  <div class="col-md-4 col-sm-4"></div>
-  <div class="col-md-4 col-sm-4"><nano>
-  <main>
-    <div class="marker"></div>
-    <h1>N</h1>
-    <h1 class="r">A</h1>
-    <h1 class="e1">N</h1>
-    <h1 class="s1">O</h1>
-    <h1 class="s2">D</h1>
-    <h1 class="e2">E</h1>
-    <h1 >X</h1>
-  </main>
-</nano></div>
-  <div class="col-md-4 col-sm-4"></div>
 </div>
