@@ -3,6 +3,7 @@ module Api
     class BotUsersController < ApplicationController
       rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
       protect_from_forgery with: :null_session
+      skip_before_action :verify_authenticity_token
 
       def index
         bot_users = Bot_user.bot_user('created_at DESC');
