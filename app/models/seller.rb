@@ -5,7 +5,7 @@ class Seller < ApplicationRecord
 	def should_generate_new_friendly_id?
 	  name_changed?
 	end
-    has_many :products, dependent: :destroy
-    belongs_to :user
-    paginates_per 12
+  has_many :products, dependent: :destroy
+  belongs_to :user
+  paginates_per 12
 end

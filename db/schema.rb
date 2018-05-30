@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_30_080448) do
+ActiveRecord::Schema.define(version: 2018_05_30_094922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,17 @@ ActiveRecord::Schema.define(version: 2018_05_30_080448) do
     t.integer "chatfuel_user_id"
     t.string "last user freeform input"
     t.string "last_user_freeform_input"
+    t.string "profile_pic_url"
+    t.string "country"
+    t.integer "user_id"
+    t.integer "bot_id"
+  end
+
+  create_table "bots", force: :cascade do |t|
+    t.string "name"
+    t.string "first_name"
+    t.string "first name"
+    t.integer "user_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|

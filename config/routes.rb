@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  resources :bots
   resources :bot_users
   resources :pdfs
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   resources :sellers
   resources :materials
-  root 'products#index'
+  root 'bot_users#index'
   resources :products
   get "products/:seller/:id", to: 'products#show', as: 'show_product'
   namespace 'api' do

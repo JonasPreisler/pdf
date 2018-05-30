@@ -16,8 +16,9 @@
  */
 
 .logo {
-	width: 160px;
+	width: 60px;
 	padding-top: 8px;
+	padding-bottom: 8px;
 }
 
 /* smaller image on mobile */

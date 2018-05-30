@@ -31,12 +31,13 @@ module Api
         last_name = params['last name']
         chatfuel_user_id = params['chatfuel user id']
         last_user_freeform_input = params['last user freeform input']
+        profile_pic_url = params['profile pic url']
       end
 
       private
 
       def bot_user_params
-        params.permit(:first_name, :messenger_user_id, :created_at_desc, :'test test', :'first name', :last_name, :'last name', :'messenger user id', :timezone, :gender, :locale, :chatfuel_user_id, :'chatfuel user id', :source, :last_user_freeform_input, :'last user freeform input')
+        params.permit(:first_name, :messenger_user_id, :created_at_desc, :'test test', :'first name', :last_name, :'last name', :'messenger user id', :timezone, :gender, :locale, :chatfuel_user_id, :'chatfuel user id', :source, :last_user_freeform_input, :'last user freeform input', :profile_pic_url, :'profile pic url', :country, :user_id)
       end
     end
   end

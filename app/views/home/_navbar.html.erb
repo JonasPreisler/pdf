@@ -14,15 +14,9 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <%= link_to "Bot users", bot_users_path, class: 'nano-nav' %>
-        <%= link_to "PDFs", pdfs_path, class: 'nano-nav' %>
-        <%= link_to "Products", products_path, class: 'nano-nav' %>
-        <%= link_to "Materials", materials_path, class: 'nano-nav' %>
-        <%= link_to "Sellers", sellers_path, class: 'nano-nav' %>
+        <%= link_to "Users", bot_users_path, class: 'nano-nav' %>
         <% if user_signed_in? %>
-          <% if current_user.seller %>
-            <%= link_to 'Add product', new_product_path, class: 'btn btn-primary div-inline-button' %>
-          <% end %>
+          <%= link_to "PDF", pdfs_path, class: 'nano-nav' %>
         <% end %>
 
         <% if user_signed_in? %>
@@ -31,12 +25,6 @@
               &#9776;
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <% unless current_user.seller %>
-                <li><%= link_to 'Create store', new_seller_path, class: 'nano-nav' %></li>
-              <% end %>
-              <% if current_user.seller %>
-                <li><%= link_to 'Edit store', edit_seller_path(current_user.seller), class: 'nano-nav' %></li>
-              <% end %>
               <li><%= link_to 'Account settings', edit_user_registration_path, class: 'nano-nav' %></li>
               <li role="separator" class="divider"></li>
               <li><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nano-nav'  %></li>

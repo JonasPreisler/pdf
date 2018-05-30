@@ -10,6 +10,8 @@
       </ul>
     </div>
   <% end %>
+  <%= form.hidden_field :bot_id, :value => current_user.bot.id %>
+  <%= form.hidden_field :user_id,:value=> current_user.id %>
 
   <div class="field">
     <%= form.label :first_name %>
@@ -30,6 +32,12 @@
     <%= form.label :chatfuel_user_id %>
     <%= form.number_field :'chatfuel user id' %>
   </div>
+
+  <div class="field">
+    <%= form.label :country %>
+    <%= form.country_select :country %>
+  </div>
+
 
   <div class="field">
     <%= form.label :gender %>

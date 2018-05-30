@@ -1,14 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <h1><%= @bot.name %></h1>
+</p>
+
+
 <% if user_signed_in? %>
-  <%= line_chart BotUser.group_by_day(:created_at).count %>
+  <%= line_chart @bot.bot_users.group_by_day(:created_at).count %>
 
   Gender chart:
-  <%= pie_chart BotUser.group(:gender).count %>
+  <%= pie_chart @bot.bot_users.group(:gender).count %>
 
 
 
-  <%= geo_chart BotUser.group(:country).count %>
+  <%= geo_chart @bot.bot_users.group(:country).count %>
 
-  <%= geo_chart BotUser.group(:locale).count %>
+  <%= geo_chart @bot.bot_users.group(:locale).count %>
 
 
   <div class="nano-card">
@@ -26,9 +34,9 @@
           </tr>
           </thead>
           <tbody>
-          <% bot_users.each do |bot_user| %>
+          <% @bot_users.each do |bot_user| %>
               <tr>
-                <td><%= link_to current_userbot_user.id, bot_user_path(bot_user) %></td>
+                <td><%= link_to bot_user.id, bot_user_path(bot_user) %></td>
                 <td><%= link_to bot_user.first_name, bot_user_path(bot_user)  %></td>
                 <td><%= bot_user.last_name %></td>
                 <td><%= bot_user.messenger_user_id %></td>

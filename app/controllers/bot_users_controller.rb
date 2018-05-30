@@ -4,13 +4,14 @@ class BotUsersController < ApplicationController
   # GET /bot_users
   # GET /bot_users.json
   def index
-    @bot_users = BotUser.all
+    @bot_users = BotUser.all.order('created_at DESC').page(params[:page])
   end
 
   # GET /bot_users/1
   # GET /bot_users/1.json
   def show
     @bot_user = BotUser.find(params[:id])
+    @bot_user = current_user.bot_users.find(params[:id])
     respond_to do |format|
       format.html
       format.pdf do
@@ -77,16 +78,19 @@ class BotUsersController < ApplicationController
     last_name = params['last name']
     chatfuel_user_id = params['chatfuel user id']
     last_user_freeform_input = params['last user freeform input']
+    profile_pic_url = params['profile pic url']
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_bot_user
-      @bot_user = BotUser.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_bot_user
+    @bot_user = BotUser.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def bot_user_params
-      params.require(:bot_user).permit(:first_name, :messenger_user_id, :created_at_desc, :last_name, :'last name', :'test test', :'first name', :'messenger user id', :timezone, :gender, :locale, :chatfuel_user_id, :'chatfuel user id', :source, :last_user_freeform_input, :'last user freeform input')
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def bot_user_params
+    params.require(:bot_user).permit(:first_name, :messenger_user_id, :created_at_desc, :last_name, :'last name', :'test test', :'first name', :'messenger user id', :timezone, :gender, :locale, :chatfuel_user_id, :'chatfuel user id', :source, :last_user_freeform_input, :'last user freeform input', :profile_pic_url, :'profile pic url', :country, :bot_id)
+  end
+
+
 end
