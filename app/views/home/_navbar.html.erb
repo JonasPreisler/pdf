@@ -12,34 +12,37 @@
       <% end %>
     </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <%= link_to "Bots", bots_path, class: 'nano-nav' %>
-        <%= link_to "About", pages_about_path, class: 'nano-nav' %>
-        <% if user_signed_in? %>
-          <% if current_user.bot %>
-            <span class="nano-nav">PDF (coming soon)</span>
-            <% end %>
-        <% end %>
+    <% if user_signed_in? %>
 
-        <% if user_signed_in? %>
-          <div class="dropdown div-inline">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              &#9776;
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li><%= link_to "Create bot", new_bot_path, class: 'nano-nav' %></li>
-              <li><%= link_to 'Account settings', edit_user_registration_path, class: 'nano-nav' %></li>
-              <li role="separator" class="divider"></li>
-              <li><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nano-nav'  %></li>
-            </ul>
-          </div>
-          <% else %>
-              <%= link_to 'Sign up', new_user_registration_path, class: 'nano-nav' %>
-        <% end %>                        
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <%= link_to "Bots", bots_path, class: 'nano-nav' %>
+          <%= link_to "About", root_path, class: 'nano-nav' %>
+          <% if user_signed_in? %>
+            <% if current_user.bot %>
+              <span class="nano-nav">Export (coming soon)</span>
+              <% end %>
+          <% end %>
+
+          <% if user_signed_in? %>
+            <div class="dropdown div-inline">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                &#9776;
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><%= link_to "Create bot", new_bot_path, class: 'nano-nav' %></li>
+                <li><%= link_to 'Account settings', edit_user_registration_path, class: 'nano-nav' %></li>
+                <li role="separator" class="divider"></li>
+                <li><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nano-nav'  %></li>
+              </ul>
+            </div>
+            <% else %>
+                <%= link_to 'Sign up', new_user_registration_path, class: 'nano-nav' %>
+          <% end %>                        
 
 
-      </ul>
-    </div>
+        </ul>
+      </div>
+    <% end %>
   </div>
 </nav>
