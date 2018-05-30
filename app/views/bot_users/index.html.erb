@@ -4,13 +4,17 @@
 
 
 <h1>Bot Users</h1>
-
 <table>
   <thead>
     <tr>
       <th>ID</th>
       <th>First name</th>
+      <th>Last name</th>
       <th>Messenger User ID</th>
+      <th>Gender</th>
+      <th>Timezone</th>
+      <th>Source</th>
+      <th>Locale</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,7 +24,12 @@
       <tr>
         <td><%= bot_user.id %></td>
         <td><%= bot_user.first_name %></td>
+        <td><%= bot_user.last_name %></td>
         <td><%= bot_user.messenger_user_id %></td>
+        <td><%= bot_user.gender %></td>
+        <td><%= bot_user.timezone %></td>
+        <td><%= bot_user.source %></td>
+        <td><%= bot_user.locale %></td>
         <td><%= link_to 'Show', bot_user %></td>
         <td><%= link_to 'Edit', edit_bot_user_path(bot_user) %></td>
         <td><%= link_to 'Destroy', bot_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

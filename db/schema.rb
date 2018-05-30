@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_30_074627) do
+ActiveRecord::Schema.define(version: 2018_05_30_080448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 2018_05_30_074627) do
     t.string "test test"
     t.string "test_test"
     t.string "first name"
+    t.string "last name"
+    t.string "last_name"
+    t.integer "messenger user id"
+    t.string "gender"
+    t.string "timezone"
+    t.string "source"
+    t.string "locale"
+    t.integer "chatfuel user id"
+    t.integer "chatfuel_user_id"
+    t.string "last user freeform input"
+    t.string "last_user_freeform_input"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|

@@ -74,6 +74,9 @@ class BotUsersController < ApplicationController
   def connect
     messenger_user_id = params['messenger user id']
     first_name = params['first name']
+    last_name = params['last name']
+    chatfuel_user_id = params['chatfuel user id']
+    last_user_freeform_input = params['last user freeform input']
   end
 
   private
@@ -84,6 +87,6 @@ class BotUsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bot_user_params
-      params.require(:bot_user).permit(:first_name, :messenger_user_id, :created_at_desc, :'test test', :'first name')
+      params.require(:bot_user).permit(:first_name, :messenger_user_id, :created_at_desc, :last_name, :'last name', :'test test', :'first name', :'messenger user id', :timezone, :gender, :locale, :chatfuel_user_id, :'chatfuel user id', :source, :last_user_freeform_input, :'last user freeform input')
     end
 end
