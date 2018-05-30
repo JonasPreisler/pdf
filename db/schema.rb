@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_30_134647) do
+ActiveRecord::Schema.define(version: 2018_05_30_135827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 2018_05_30_134647) do
     t.string "timezone"
     t.string "source"
     t.string "locale"
-    t.integer "chatfuel user id"
-    t.integer "chatfuel_user_id"
+    t.string "chatfuel user id"
+    t.string "chatfuel_user_id"
     t.string "last user freeform input"
     t.string "last_user_freeform_input"
     t.string "profile_pic_url"
