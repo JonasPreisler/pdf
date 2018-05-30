@@ -1,23 +1,48 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <h1><%= @bot.name %></h1>
-</p>
+<div class="row">
+  <div class="col-xs-6 col-md-4">
+    <%= image_tag @bot.image.url(:small), class: 'bot-image' %>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-8">
+    <p>
+      <h1><strong><%= @bot.name %></strong></h1>
+    </p>
+    <br/>
+    <br/>
+    Number of users: <%= @bot.bot_users.count %>
+    <br/>
+    <br/>
+    Registered at: <%= @bot.created_at %>
+    <br/>
+    <br/>
+    <%= link_to "Try the bot", @bot.website, target: :_blank, class: "link box" if @bot.website? %>
+    <br/>
+    <br/>
+  </div>
+</div>
 <br/>
 <br/>
-Number of users: <%= @bot.bot_users.count %>
 <br/>
 <br/>
 
-<%= line_chart @bot.bot_users.group_by_day(:created_at).count %>
 
-Gender chart:
-<%= pie_chart @bot.bot_users.group(:gender).count %>
+<div class="row">
+  <div class="col-md-6 col-md-6">
+    <%= line_chart @bot.bot_users.group_by_day(:created_at).count %>
+  </div>
+  <div class="col-md-6 col-md-6">
+    <%= pie_chart @bot.bot_users.group(:gender).count %>
+  </div>
+</div>
+
+<br />
+<br />
 
 <%= geo_chart @bot.bot_users.group(:country).count %>
 
 
-<% if user_signed_in? and current_user == @bot %>
+<% if user_signed_in? and current_user.bot == @bot %>
 
   <div class="nano-card">
       <table class="table table-hover">
@@ -55,6 +80,21 @@ Gender chart:
       </div>
   </div>
 <% end %>
+<br/>
+<br/>
+<% if user_signed_in? %>
+  <%= link_to "Edit bot", edit_bot_path, class: "link box" %>
+  <br/>
+  <br/>
+  "bot_id": <%= @bot.secret_code %>
+  <br/>
+  <br/>
+  "bot_id": <%= @bot.id %>
+  <br/>
+  <br />
+  "user_id": <%= current_user.id %>
+<% end %>
+
 <br />
 <br />
 <br />

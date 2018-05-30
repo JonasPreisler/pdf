@@ -12,6 +12,7 @@
   <% end %>
   <%= form.hidden_field :bot_id %>
   <%= form.hidden_field :user_id %>
+  <%= form.hidden_field :bot_id, :value => current_user.bot.secret_code %>
 
   <div class="field">
     <%= form.label :first_name %>

@@ -1,3 +1,8 @@
+
+1. Go to your bot. See the "Bot ID" and "User ID"
+
+
+
 <center>
 
 <h1><strong>
@@ -40,60 +45,5 @@ Our index of bots will make it easy for you to find or sell a bot, showcasing an
 <br />
 <br />
 <br />
-
-<h4><strong>Test-data from the <span style="color:#f2d426;">Tekuila</span> <a href="m.me/darthvaderspage?ref=api" target="_blank" style="color:#2644f2;">test-bot</a> ←</strong> (click).</h4>
-</center>
-<br />
-<br />
-<div class="row">
-	<div class="col-md-6 col-md-6">
-		<%= line_chart @bot_users.group_by_day(:created_at).count %>
-	</div>
-	<div class="col-md-6 col-md-6">
-		<%= pie_chart @bot_users.group(:gender).count %>
-	</div>
-</div>
-<br />
-<br />
-<%= geo_chart @bot_users.group(:country).count %>
-<br />
-
-<div class="nano-card">
-  <table class="table table-hover">
-      <thead>
-      <tr>
-        <th>ID</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Messenger User ID</th>
-        <th>Gender</th>
-        <th>Timezone</th>
-        <th>Source</th>
-        <th>City</th>
-        <th>Country</th>
-      </tr>
-      </thead>
-      <tbody>
-        <% @bot_users.each do |bot_user| %>
-            <tr>
-              <td><%= bot_user.id %></td>
-              <td><%= bot_user.first_name %></td>
-              <td><%= bot_user.last_name.truncate(3) if bot_user.last_name %>..</td>
-              <td>🤐<%#= bot_user.messenger_user_id %></td>
-              <td><%= bot_user.gender %></td>
-              <td><%= bot_user.city %></td>
-              <td><%= bot_user.source %></td>
-              <td><%= bot_user.city.truncate(3) if bot_user.city %></td>
-              <td>🤐<%#= bot_user.country if bot_user.country %></td>
-            </tr>
-        <% end %>
-      </tbody>
-  </table>
-  <div class="paginate-parent">
-      <div class="paginate">
-          <%= paginate @bot_users %>
-      </div>
-  </div>
-</div>
 
 <div style="padding-bottom:100px;"></div>

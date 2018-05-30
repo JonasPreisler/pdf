@@ -4,4 +4,8 @@ class PagesController < ApplicationController
     @bot_users = BotUser.all.page(params[:page])
   end
 
+  def how
+  end
+
+
 end

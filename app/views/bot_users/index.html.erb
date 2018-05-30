@@ -22,7 +22,9 @@
             <th>Gender</th>
             <th>Timezone</th>
             <th>Source</th>
-            <th>Locale</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>Last user freeform input</th>
           </tr>
           </thead>
           <tbody>
@@ -35,7 +37,9 @@
                 <td><%= bot_user.gender %></td>
                 <td><%= bot_user.timezone %></td>
                 <td><%= bot_user.source %></td>
-                <td><%= bot_user.locale %></td>
+                <td><%= bot_user.city %></td>
+                <td><%= bot_user.country %></td>
+                <td><%= bot_user.last_user_freeform_input if bot_user.last_user_freeform_input  %></td>
               </tr>
           <% end %>
           </tbody>

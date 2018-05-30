@@ -44,6 +44,10 @@ body {
 }
 .btn-primary {
 	background-color: #F2D426;
+	padding-left: 25px;
+	padding-right: 25px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	&:hover {
 	background-color: #f5e067;
 	}
@@ -217,26 +221,26 @@ a {
 	}
 }
 
-/* product form */
+/* bot form */
 
 
-#product-form{
+#bot-form{
 	max-width: 800px;
 	margin: 120px auto;
 }
 
-#product-form .image{
+#bot-form .image{
 	float:left;
-	background-image: asset-data-url("product.jpg");
-	height: 1100px;
+	background-image: asset-data-url("bot.jpg");
+	height: 400px;
 	width: 35%;
 	background-size: cover;
 	background-position: 25%;
 }
 
-#product-form .frm{
+#bot-form .frm{
 	float:right;
-	height: 1100px;
+	height: 400px;
     width: 65%;
     min-width: 250px;
     padding: 0 35px;
@@ -244,46 +248,46 @@ a {
     background-color: white;
 }
 
-#product-form h1{
+#bot-form h1{
 	margin-top: 30px;
 	margin-bottom: 20px;
 }
 
-#product-form .form-control{
+#bot-form .form-control{
 	width: 90%;
 	padding: 12px 20px;
 	height: auto;
 }
 
 @media screen and (max-width: 700px){
-	#product-form .image{
+	#bot-form .image{
 		width: 30%;
 	    background-position: 60%;
 	}
 
-	#product-form .frm{
+	#bot-form .frm{
 		width: 70%;
 	}
 
-	#product-form .form-control{
+	#bot-form .form-control{
 		width: 100%;
 	}
 }
 
 @media screen and (max-width: 500px){
-	#product-form .image{
+	#bot-form .image{
 		display: none;
 	}
 
-	#product-form .frm{
+	#bot-form .frm{
 		width: 100%;
 	}
 
-	#product-form h1{
+	#bot-form h1{
 		text-align: center;
 	}
 
-	#product-form .btn{
+	#bot-form .btn{
 		width: 100%;
 		margin-top: 20px;
 	}
@@ -318,7 +322,7 @@ input[type="file"] {
 
 #registration-form .image{
 	float:left;
-	background-image: asset-data-url("registration.jpg");
+	background-image: asset-data-url("tequila.jpg");
 	height: 500px;
 	width: 50%;
 	background-size: cover;
@@ -529,7 +533,7 @@ hr {
 	}
 }
 .nano-nav {
-	padding: 10px;
+	padding: 20px;
 	font-size: 14px;
 }
 .thumbnail > img, .thumbnail a > img {
@@ -631,4 +635,15 @@ td {
 
 .box:hover::after {
     opacity: 1;
+}
+.link {
+	background: #F2D426;
+	border-radius: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.bot-image {
+	border-radius: 15px;
 }

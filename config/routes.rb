@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   get 'pages/about', to: 'pages#about'
+  get 'pages/how', to: 'pages#how'
 
   get 'callback/index'
   post '/' => 'callback#received_data'

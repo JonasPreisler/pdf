@@ -1,26 +1,57 @@
-<%= form_with(model: bot, local: true) do |form| %>
-  <% if bot.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(bot.errors.count, "error") %> prohibited this bot from being saved:</h2>
+<div class="container" id="bot-form">
+  <div class="image"></div>
+  <div class="frm">
+        <%= form_for @bot, html: { multipart: true } do |form| %>    
+          <% if @bot.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
-      <ul>
-      <% bot.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <%= form.hidden_field :user_id,:value=>current_user.id %>
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-  <div class="field">
-    <%= form.label :image_300_x_300 %>
-    <%= form.file_field :image %>
-  </div>
+              <ul>
+              <% product.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <br />
+          <strong style="color:#aaa;font-size:20px;">Add new bot</strong>
+          <div class="actions" style="float:right;">
+            <%= form.submit "Add bot", class: 'btn btn-primary box' %>
+          </div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <%= form.hidden_field :user_id,:value=>current_user.id %>
 
-  <div class="actions">
-    <%= form.submit %>
+          <div class="field">
+            <%= form.text_field :name, type: "text", class: "form-control", placeholder: "Bot name", :required => true %>
+          </div>
+
+          <div class="field">
+            <%= form.text_field :secret_code, type: "text", class: "form-control", placeholder: "Secret code", :required => true %>
+          </div>
+
+
+          <br />
+          <br />
+
+          <div class="field">
+            <%= form.text_field :website, type: "text (optional)", class: "form-control", placeholder: "Bot link (must include 'https://')" %>
+          </div>
+
+          <br />
+          <br />
+
+          <div class="field">
+            <%= form.label :image_300_x_300 %>
+            <%= form.file_field :image %>
+          </div>
+
+        <% end %>
+      </form>
   </div>
-<% end %>
+</div>
+
+
+
