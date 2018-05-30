@@ -25,6 +25,11 @@ module Api
         end
       end
 
+      def connect
+        messenger_user_id = params['messenger user id']
+        first_name = params['first name']
+      end
+
       private
 
       def bot_user_params

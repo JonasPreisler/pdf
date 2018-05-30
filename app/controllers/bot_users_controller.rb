@@ -71,6 +71,11 @@ class BotUsersController < ApplicationController
     end
   end
 
+  def connect
+    messenger_user_id = params['messenger user id']
+    first_name = params['first name']
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bot_user
