@@ -10,8 +10,8 @@
       </ul>
     </div>
   <% end %>
-  <%= form.hidden_field :bot_id, :value => current_user.bot.id %>
-  <%= form.hidden_field :user_id,:value=> current_user.id %>
+  <%= form.hidden_field :bot_id %>
+  <%= form.hidden_field :user_id %>
 
   <div class="field">
     <%= form.label :first_name %>
