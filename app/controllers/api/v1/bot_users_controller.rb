@@ -28,7 +28,7 @@ module Api
       private
 
       def bot_user_params
-        params.permit(:first_name, :messenger_user_id, :created_at_desc)
+        params.permit(:first_name, :messenger_user_id, :created_at_desc, :'first name')
       end
     end
   end
