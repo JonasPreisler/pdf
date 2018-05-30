@@ -10,6 +10,16 @@ class BotUsersController < ApplicationController
   # GET /bot_users/1
   # GET /bot_users/1.json
   def show
+    @bot_user = BotUser.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        bot_user = BotUserPdf.new(@bot_users)
+        send_data bot_user.render, filename: "pdf_#{@bot_user.first_name}.bot_user",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
+    end
   end
 
   # GET /bot_users/new
@@ -69,6 +79,6 @@ class BotUsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bot_user_params
-      params.require(:bot_user).permit(:first_name)
+      params.require(:bot_user).permit(:first_name, :messenger_user_id, :created_at_desc)
     end
 end

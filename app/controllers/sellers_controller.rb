@@ -13,10 +13,16 @@ class SellersController < ApplicationController
   # GET /sellers/1.json
   def show
     @products = @seller.products.order(:created_at).page(params[:page])
-    @sellers = Seller.all
-    @seller = Seller.friendly.find(params[:id])
-    @random_seller = Seller.where.not(id: @seller).order("RANDOM()").first
-    @random_seller2 = Seller.where.not(id: @seller).order("RANDOM()").second
+    @seller = Seller.all
+    respond_to do |format|
+      format.html
+      format.pdf do
+        seller = SellerPdf.new(@seller)
+        send_data seller.render, filename: "pdf_#{@seller.name}.seller",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
+    end
   end
 
   # GET /sellers/new
