@@ -8,6 +8,7 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>First name</th>
       <th>Messenger User ID</th>
       <th colspan="3"></th>
@@ -17,7 +18,7 @@
   <tbody>
     <% @bot_users.each do |bot_user| %>
       <tr>
-        <td><%= bot_user.first_name %></td>
+        <td><%= bot_user.id %></td>
         <td><%= bot_user.messenger_user_id %></td>
         <td><%= link_to 'Show', bot_user %></td>
         <td><%= link_to 'Edit', edit_bot_user_path(bot_user) %></td>
