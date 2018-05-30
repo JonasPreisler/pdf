@@ -2,11 +2,12 @@ Rails.application.routes.draw do
   resources :bots
   resources :bot_users
   resources :pdfs
+  resources :pages
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   resources :sellers
   resources :materials
-  root 'bot_users#index'
+  root 'pages#about'
   resources :products
   get "products/:seller/:id", to: 'products#show', as: 'show_product'
   namespace 'api' do
@@ -14,6 +15,9 @@ Rails.application.routes.draw do
       resources :bot_users
   	end
   end
+
+  get 'pages/about', to: 'pages#about'
+
   get 'callback/index'
   post '/' => 'callback#received_data'
   get 'callback/received_data'

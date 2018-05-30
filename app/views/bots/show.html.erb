@@ -1,23 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
   <h1><%= @bot.name %></h1>
 </p>
+<br/>
+<br/>
+Number of users: <%= @bot.bot_users.count %>
+<br/>
+<br/>
+
+<%= line_chart @bot.bot_users.group_by_day(:created_at).count %>
+
+Gender chart:
+<%= pie_chart @bot.bot_users.group(:gender).count %>
+
+<%= geo_chart @bot.bot_users.group(:country).count %>
 
 
-<% if user_signed_in? %>
-  <%= line_chart @bot.bot_users.group_by_day(:created_at).count %>
-
-  Gender chart:
-  <%= pie_chart @bot.bot_users.group(:gender).count %>
-
-
-
-  <%= geo_chart @bot.bot_users.group(:country).count %>
-
-  <%= geo_chart @bot.bot_users.group(:locale).count %>
-
+<% if user_signed_in? and current_user == @bot %>
 
   <div class="nano-card">
       <table class="table table-hover">
@@ -30,22 +30,22 @@
             <th>Gender</th>
             <th>Timezone</th>
             <th>Source</th>
-            <th>Locale</th>
+            <th>Country</th>
           </tr>
           </thead>
           <tbody>
-          <% @bot_users.each do |bot_user| %>
-              <tr>
-                <td><%= link_to bot_user.id, bot_user_path(bot_user) %></td>
-                <td><%= link_to bot_user.first_name, bot_user_path(bot_user)  %></td>
-                <td><%= bot_user.last_name %></td>
-                <td><%= bot_user.messenger_user_id %></td>
-                <td><%= bot_user.gender %></td>
-                <td><%= bot_user.timezone %></td>
-                <td><%= bot_user.source %></td>
-                <td><%= bot_user.locale %></td>
-              </tr>
-          <% end %>
+            <% @bot_users.each do |bot_user| %>
+                <tr>
+                  <td><%= link_to bot_user.id, bot_user_path(bot_user) %></td>
+                  <td><%= link_to bot_user.first_name, bot_user_path(bot_user)  %></td>
+                  <td><%= bot_user.last_name %></td>
+                  <td><%= bot_user.messenger_user_id %></td>
+                  <td><%= bot_user.gender %></td>
+                  <td><%= bot_user.timezone %></td>
+                  <td><%= bot_user.source %></td>
+                  <td><%= bot_user.country %></td>
+                </tr>
+            <% end %>
           </tbody>
       </table>
       <div class="paginate-parent">
@@ -55,3 +55,6 @@
       </div>
   </div>
 <% end %>
+<br />
+<br />
+<br />

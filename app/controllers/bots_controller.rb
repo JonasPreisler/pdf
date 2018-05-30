@@ -6,7 +6,8 @@ class BotsController < ApplicationController
   # GET /bots
   # GET /bots.json
   def index
-    @bots = Bot.all
+    @bots = Bot.all.order(:created_at).page(params[:page])
+    @bot_users = BotUser.all.count
   end
 
   # GET /bots/1
@@ -81,7 +82,7 @@ class BotsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bot_params
-      params.require(:bot).permit(:name, :first_name, :user_id, :bot_user, :'first_name')
+      params.require(:bot).permit(:name, :first_name, :user_id, :bot_user, :'first_name', :image)
     end
 
     def check_bot_owner

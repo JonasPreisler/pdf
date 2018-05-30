@@ -1,0 +1,96 @@
+<center>
+
+<h1><strong>
+  What is
+  <a style="color:#f2d426;" class="typewrite" data-period="2000" data-type='[ "Tekuila?", "life?", "your dream?", "a bot", "the 7th dimension?"  ]'>
+    <span class="wrap"></span>
+  </a>
+</strong></h1>
+
+
+<br />
+<div class="sub-title">With <span style="color:#f2d426;"">Tekuila</span> you can automatically save all your <i>new</i> Messenger bot users in an easy-to-understand overview containing all the data.</div>
+<br />
+<br />
+</center>
+<div class="row">
+	<div class="col-md-6 col-md-6">
+		<div style="border:2px solid #fff;padding:30px;border-radius:15px;height:180px;margin:10px;background:#555;color:#ddd;">
+			<h4><strong>Export PDF with <span style="color:#f2d426;">beautiful</span> analytics</strong></h4>
+			This is under development, as I'm (Jonas) still figuring out how to include the cool charts, as the ones below, into the PDF.
+		</div>
+	</div>
+	<div class="col-md-6 col-md-6">
+		<div style="border:2px solid #fff;padding:30px;border-radius:15px;height:180px;margin:10px;background:#555;color:#ddd;">
+			<h4><strong><span style="color:#f2d426;">Overview</span> of other bot-owners bots, incl their growth.</strong></h4>
+			A nice overview over other <span style="color:#f2d426;">Tekuila</span>-users bots. You can see their number of users (live), a link to their Facebook page and other fun data.
+		</div>
+	</div>
+</div>
+<br />
+<br />
+<center>
+<h4><strong>Why should I use <span style="color:#f2d426;">Tekuila</span>?</strong></h4>
+How about the PDF export function? It's literally done with a single click!
+<br />
+How about selling shoutouts to other marketers or even selling a whole bot incl. it's users?
+<br />
+Our index of bots will make it easy for you to find or sell a bot, showcasing and viewing live data.
+<br />
+<br />
+<br />
+
+<h4><strong>Test-data from the <span style="color:#f2d426;">Tekuila:</span> <a href="https://google.com" target="_blank" style="color:#2644f2;">test-bot</a> ←</strong> (click).</h4>
+</center>
+<br />
+<br />
+<div class="row">
+	<div class="col-md-6 col-md-6">
+		<%= line_chart @bot_users.group_by_day(:created_at).count %>
+	</div>
+	<div class="col-md-6 col-md-6">
+		<%= pie_chart @bot_users.group(:gender).count %>
+	</div>
+</div>
+<br />
+<br />
+<%= geo_chart @bot_users.group(:country).count %>
+<br />
+
+<div class="nano-card">
+  <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Messenger User ID</th>
+        <th>Gender</th>
+        <th>Timezone</th>
+        <th>Source</th>
+        <th>Country</th>
+      </tr>
+      </thead>
+      <tbody>
+        <% @bot_users.each do |bot_user| %>
+            <tr>
+              <td><%= link_to bot_user.id, bot_user_path(bot_user) %></td>
+              <td><%= link_to bot_user.first_name, bot_user_path(bot_user)  %></td>
+              <td><%= bot_user.last_name.truncate(3) if bot_user.last_name%></td>
+              <td><%= bot_user.messenger_user_id %></td>
+              <td><%= bot_user.gender %></td>
+              <td><%= bot_user.timezone %></td>
+              <td><%= bot_user.source %></td>
+              <td><%= bot_user.country %></td>
+            </tr>
+        <% end %>
+      </tbody>
+  </table>
+  <div class="paginate-parent">
+      <div class="paginate">
+          <%= paginate @bot_users %>
+      </div>
+  </div>
+</div>
+
+<div style="padding-bottom:100px;"></div>

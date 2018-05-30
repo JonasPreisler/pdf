@@ -9,4 +9,5 @@ class BotUser < ApplicationRecord
   paginates_per 20
   belongs_to :user, optional: true
   belongs_to :bot, optional: true
+  belongs_to :page, optional: true
 end

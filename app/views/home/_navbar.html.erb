@@ -14,9 +14,12 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <%= link_to "Users", bot_users_path, class: 'nano-nav' %>
+        <%= link_to "Bots", bots_path, class: 'nano-nav' %>
+        <%= link_to "About", pages_about_path, class: 'nano-nav' %>
         <% if user_signed_in? %>
-          <%= link_to "PDF", pdfs_path, class: 'nano-nav' %>
+          <% if current_user.bot %>
+            <span class="nano-nav">PDF (coming soon)</span>
+            <% end %>
         <% end %>
 
         <% if user_signed_in? %>
@@ -25,6 +28,7 @@
               &#9776;
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><%= link_to "Create bot", new_bot_path, class: 'nano-nav' %></li>
               <li><%= link_to 'Account settings', edit_user_registration_path, class: 'nano-nav' %></li>
               <li role="separator" class="divider"></li>
               <li><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nano-nav'  %></li>

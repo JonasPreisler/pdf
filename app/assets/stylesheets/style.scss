@@ -40,12 +40,12 @@ body {
 }
 
 .progress-bar {
-	background-color: #328432;
+	background-color: #F2D426;
 }
 .btn-primary {
-	background-color: #328432;
+	background-color: #F2D426;
 	&:hover {
-	background-color: #84b584;
+	background-color: #f5e067;
 	}
 	border: none;
 }
@@ -426,7 +426,7 @@ a {
   text-decoration: none;
   display: inline-block;
   position: relative;
-  font-family: Verdana, Geneva, sans-serif;
+  font-family: poppins;
 }
 
 /* materials list underline */
@@ -575,9 +575,10 @@ td {
     overflow: hidden;
 }
 .panel-footer {
-	background-color: #328432;
+	background-color: #f2d426;
+	padding: 15px;
 	&:hover {
-		background-color: #469046;
+		background-color: #f4dc51;
 	}
 }
 .white-text {
@@ -590,4 +591,11 @@ td {
 	border-bottom: 5px solid #ddd;
 	margin-bottom: 20px;
 	border-radius: 3px;
+}
+.typerwite {
+  color: #f2d426;
+  text-decoration: none !important;
+}
+.typewrite .wrap {
+  border-right: 3px solid #1c1c1c !important;
 }

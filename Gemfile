@@ -28,6 +28,7 @@ gem 'kaminari'
 gem 'prawn', '~> 2.2', '>= 2.2.2'
 gem "chartkick"
 gem 'groupdate'
+gem 'fog'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

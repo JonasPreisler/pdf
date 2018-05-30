@@ -1,27 +1,29 @@
-<p id="notice"><%= notice %></p>
+<% @bots.each do |bot| %>
+    <div class="col-md-3 col-sm-4">
+      <div class="thumbnail">
+        <% if bot.image? %>
+          <%= link_to (image_tag bot.image.url(:small)), bot, class: 'seller-preview' %>
+        <% else %>
+          <%= link_to (image_tag '/thumbnail.png'), bot, class: 'seller-preview' %>
+        <% end %>
+        <div class="caption">
+          <h4 style="font-size:16px;"><%= link_to bot.name.truncate(20), bot %></h4>
+        </div>
+        <div class="panel-footer">
+          Users: <%= bot.bot_users.count %>
+          <%#div class="col-xs-8 col-sm-6">
+            <% &#9889; rating %>
+          <%#/div>
+          <%#div class="col-xs-4 col-sm-6"%>
+        </div>
+          <%#/div%>
+      </div>
+    </div>
+<% end %>
+<div class="paginate-parent">
+    <div class="paginate">
+        <%= paginate @bots %>
+    </div>
+</div>
 
-<h1>Bots</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @bots.each do |bot| %>
-      <tr>
-        <td><%= bot.name %></td>
-        <td><%= link_to 'Show', bot %></td>
-        <td><%= link_to 'Edit', edit_bot_path(bot) %></td>
-        <td><%= link_to 'Destroy', bot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Bot', new_bot_path %>
