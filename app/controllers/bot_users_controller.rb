@@ -89,7 +89,7 @@ class BotUsersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def bot_user_params
-    params.require(:bot_user).permit(:first_name, :messenger_user_id, :created_at_desc, :last_name, :'last name', :'test test', :'first name', :'messenger user id', :timezone, :gender, :locale, :chatfuel_user_id, :'chatfuel user id', :source, :last_user_freeform_input, :'last user freeform input', :profile_pic_url, :'profile pic url', :country, :bot_id)
+    params.require(:bot_user).permit(:first_name, :messenger_user_id, :created_at_desc, :last_name, :'last name', :'test test', :'first name', :'messenger user id', :timezone, :gender, :locale, :chatfuel_user_id, :'chatfuel user id', :source, :last_user_freeform_input, :'last user freeform input', :profile_pic_url, :'profile pic url', :country, :bot_id, :user_id)
   end
 
 
