@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_30_132639) do
+ActiveRecord::Schema.define(version: 2018_05_30_133633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,13 +20,13 @@ ActiveRecord::Schema.define(version: 2018_05_30_132639) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "created_at_desc"
-    t.integer "messenger_user_id"
+    t.bigint "messenger_user_id"
     t.string "test test"
     t.string "test_test"
     t.string "first name"
     t.string "last name"
     t.string "last_name"
-    t.integer "messenger user id"
+    t.bigint "messenger user id"
     t.string "gender"
     t.string "timezone"
     t.string "source"
