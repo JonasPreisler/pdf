@@ -1,8 +1,71 @@
-Bot ID: <%= @bot.id %>
-User ID: <%= current_user.id %>
+<div class="container" id="bot-form">
+  <div class="image"></div>
+  <div class="frm">
+        <%= form_for @bot, html: { multipart: true } do |form| %>    
+          <% if @bot.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+              <ul>
+              <% product.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <br />
+          <strong style="color:#aaa;font-size:20px;">Update bot</strong>
+          <div class="actions" style="float:right;">
+            <%= form.submit "Update bot", class: 'btn btn-primary box' %>
+          </div>
+          <br />
+          <br />
+          "bot_id": <%= @bot.secret_code %>
+          <br />
+          "bot_id": <%= @bot.id %>
+          <br />
+          "user_id": <%= current_user.id %>
+          <br />
+          <br />
+
+          <%= form.hidden_field :user_id,:value=>current_user.id %>
+
+          <div class="field">
+            <%= form.text_field :name, type: "text", class: "form-control", placeholder: "Bot name", :required => true %>
+          </div>
+
+          <br />
+          <br />
+
+          <div class="field">
+            <%= form.text_field :secret_code, type: "text", class: "form-control", placeholder: "Secret code", :required => true %>
+          </div>
 
 
-<%= render 'form', bot: @bot %>
+          <br />
+          <br />
 
-<%= link_to 'Show', @bot %> |
-<%= link_to 'Back', bots_path %>
+          <div class="field">
+            <%= form.text_field :website, type: "text (optional)", class: "form-control", placeholder: "Bot link (must include 'https://')" %>
+          </div>
+
+          <br />
+          <br />
+
+          <div class="field">
+            <%= form.label :image_300_x_300 %>
+            <%= form.file_field :image %>
+          </div>
+          <br />
+          <br />
+          <%= link_to 'Delete bot', bot_path(@bot),
+              data: {:confirm => 'Are you sure?'}, :method => :delete, class: 'btn btn-danger' %>
+
+        <% end %>
+        <br />
+        <br />
+
+      </form>
+  </div>
+</div>
+

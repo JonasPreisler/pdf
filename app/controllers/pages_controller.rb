@@ -4,7 +4,10 @@ class PagesController < ApplicationController
     @bot_users = BotUser.all.page(params[:page])
   end
 
-  def how
+  def how_to
+  end
+
+  def show
   end
 
 

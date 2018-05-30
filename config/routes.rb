@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :bots
+  resources :bots do
+    collection { post :how }
+  end
   resources :bot_users
   resources :pdfs
   resources :pages
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
   end
 
   get 'pages/about', to: 'pages#about'
-  get 'pages/how', to: 'pages#how'
+  get 'pages/how_to', to: 'pages#how_to'
 
   get 'callback/index'
   post '/' => 'callback#received_data'

@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+
 <div class="row">
   <div class="col-xs-6 col-md-4">
     <%= image_tag @bot.image.url(:small), class: 'bot-image' %>
@@ -80,21 +81,6 @@
       </div>
   </div>
 <% end %>
-<br/>
-<br/>
-<% if user_signed_in? %>
-  <%= link_to "Edit bot", edit_bot_path, class: "link box" %>
-  <br/>
-  <br/>
-  "bot_id": <%= @bot.secret_code %>
-  <br/>
-  <br/>
-  "bot_id": <%= @bot.id %>
-  <br/>
-  <br />
-  "user_id": <%= current_user.id %>
-<% end %>
-
 <br />
 <br />
 <br />
