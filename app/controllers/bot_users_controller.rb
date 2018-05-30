@@ -79,6 +79,6 @@ class BotUsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bot_user_params
-      params.require(:bot_user).permit(:first_name, :messenger_user_id, :created_at_desc)
+      params.require(:bot_user).permit(:first_name, :messenger_user_id, :created_at_desc, :'test test', :'first name')
     end
 end

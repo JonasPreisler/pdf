@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_27_072241) do
+ActiveRecord::Schema.define(version: 2018_05_30_074627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(version: 2018_05_27_072241) do
     t.datetime "updated_at", null: false
     t.datetime "created_at_desc"
     t.integer "messenger_user_id"
+    t.string "test test"
+    t.string "test_test"
+    t.string "first name"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -62,12 +65,18 @@ ActiveRecord::Schema.define(version: 2018_05_27_072241) do
     t.decimal "purity", precision: 15, scale: 2
     t.decimal "diameter", precision: 15, scale: 2
     t.decimal "length", precision: 15, scale: 2
-    t.decimal "surface_area", precision: 15, scale: 2
+    t.integer "surface_area"
     t.string "solvent"
     t.string "layer"
     t.decimal "length_two", precision: 15, scale: 2
     t.decimal "mililiter", precision: 15, scale: 2
     t.datetime "created_at"
+    t.string "pdf"
+    t.integer "concentration"
+    t.integer "thickness"
+    t.integer "thickness_two"
+    t.string "synthesis_method"
+    t.integer "surface_area_two"
     t.index ["material_id"], name: "index_products_on_material_id"
     t.index ["seller_id"], name: "index_products_on_seller_id"
   end
