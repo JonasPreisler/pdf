@@ -6,7 +6,7 @@ class BotsController < ApplicationController
   # GET /bots
   # GET /bots.json
   def index
-    @bots = Bot.all.order(:created_at).page(params[:page])
+    @bots = Bot.all.order('created_at DESC').page(params[:page])
     @bot_users = BotUser.all.count
   end
 
@@ -86,7 +86,7 @@ class BotsController < ApplicationController
     end
 
     def check_bot_owner
-      if current_user.bot != @bot
+      if current_user != Bot.find(params[:id]).user
         flash[:notice] = "You are not an authorized user to edit this bot"
         redirect_to bots_path
       end

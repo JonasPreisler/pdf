@@ -1,15 +1,27 @@
-<center>
-
-<h1><strong>
-  What is
-  <a style="color:#f2d426;" class="typewrite" data-period="2000" data-type='[ "Tekuila?", "life?", "your dream?", "the future of bots?", "the 7th dimension?", "happiness?" ]'>
-    <span class="wrap"></span>
-  </a>
-</strong></h1>
-
-
 <br />
-<div class="sub-title">With <span style="color:#f2d426;"">Tekuila</span> you can automatically save all your <i>new</i> Messenger bot users in an easy-to-understand overview containing all the data.</div>
+<br />
+<div class="row">
+  <div class="col-md-6 col-sm-6">
+    <br />
+    <br />
+    <h1 style="background-color:#fff;border-radius:10px;padding:15px;"><strong>
+      What is
+      <a style="color:#f2d426;" class="typewrite" data-period="2000" data-type='[ "Tekuila?", "life?", "your dream?", "the future of bots?", "the 7th dimension?", "happiness?" ]'>
+        <span class="wrap"></span>
+      </a>
+    </strong></h1>
+
+
+    <br />
+    <div class="sub-title">With <span style="color:#f2d426;"">Tekuila</span> you can automatically save all your <i>new</i> Chatfuel bot users in an easy-to-understand overview containing all the data.</div>
+    <br />
+    <br />
+  </div>
+  <div class="col-md-6 col-sm-6">
+    <%= line_chart @bot_users.group_by_day(:created_at).count %>
+  </div>
+</div>
+<hr>
 <br />
 <br />
 </center>
@@ -40,7 +52,9 @@ Our index of bots will make it easy for you to find or sell a bot, showcasing an
 <br />
 <br />
 <br />
-
+<hr>
+<br />
+<br />
 <h4><strong>Test-data from the <span style="color:#f2d426;">Tekuila</span> <a href="m.me/darthvaderspage?ref=api" target="_blank" style="color:#2644f2;">test-bot</a> ←</strong> (click).</h4>
 </center>
 <br />

@@ -3,7 +3,11 @@
 
 <div class="row">
   <div class="col-xs-6 col-md-4">
-    <%= image_tag @bot.image.url(:small), class: 'bot-image' %>
+    <% if @bot.image? %>
+      <%= image_tag @bot.image.url(:small), class: 'bot-image' %>
+    <% else %>
+      <%= image_tag '/thumbnail.png', class: 'img-responsive' %>
+    <% end %>
   </div>
   <div class="col-xs-12 col-sm-6 col-md-8">
     <p>
@@ -20,6 +24,11 @@
     <%= link_to "Try the bot", @bot.website, target: :_blank, class: "link box" if @bot.website? %>
     <br/>
     <br/>
+    <% if user_signed_in? and current_user.id == @bot.user.id %>
+      <%= link_to "Edit bot", edit_bot_path, class: 'link box' %>
+    <% end %>
+    <br />
+    <br />
   </div>
 </div>
 <br/>
@@ -42,45 +51,45 @@
 
 <%= geo_chart @bot.bot_users.group(:country).count %>
 
-
-<% if user_signed_in? and current_user.bot == @bot %>
-
+<% if user_signed_in? and current_user.id == @bot.user.id %>
   <div class="nano-card">
-      <table class="table table-hover">
-          <thead>
-          <tr>
-            <th>ID</th>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Messenger User ID</th>
-            <th>Gender</th>
-            <th>Timezone</th>
-            <th>Source</th>
-            <th>Country</th>
-          </tr>
-          </thead>
-          <tbody>
-            <% @bot_users.each do |bot_user| %>
-                <tr>
-                  <td><%= link_to bot_user.id, bot_user_path(bot_user) %></td>
-                  <td><%= link_to bot_user.first_name, bot_user_path(bot_user)  %></td>
-                  <td><%= bot_user.last_name %></td>
-                  <td><%= bot_user.messenger_user_id %></td>
-                  <td><%= bot_user.gender %></td>
-                  <td><%= bot_user.timezone %></td>
-                  <td><%= bot_user.source %></td>
-                  <td><%= bot_user.country %></td>
-                </tr>
-            <% end %>
-          </tbody>
-      </table>
-      <div class="paginate-parent">
-          <div class="paginate">
-              <%= paginate @bot_users %>
-          </div>
-      </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Messenger User ID</th>
+          <th>Gender</th>
+          <th>Timezone</th>
+          <th>Source</th>
+          <th>Country</th>
+        </tr>
+        </thead>
+        <tbody>
+          <% @bot_users.each do |bot_user| %>
+              <tr>
+                <td><%= link_to bot_user.id, bot_user_path(bot_user) %></td>
+                <td><%= link_to bot_user.first_name, bot_user_path(bot_user)  %></td>
+                <td><%= bot_user.last_name %></td>
+                <td><%= bot_user.messenger_user_id %></td>
+                <td><%= bot_user.gender %></td>
+                <td><%= bot_user.timezone %></td>
+                <td><%= bot_user.source %></td>
+                <td><%= bot_user.country %></td>
+              </tr>
+          <% end %>
+        </tbody>
+    </table>
+    <div class="paginate-parent">
+        <div class="paginate">
+            <%= paginate @bot_users %>
+        </div>
+    </div>
   </div>
-<% end %>
 <br />
+<br />
+<br />
+<% end %>
 <br />
 <br />

@@ -1,3 +1,10 @@
+<div class="paginate-parent">
+    <div class="paginate-white">
+        <%= paginate @bots %>
+    </div>
+</div>
+<br />
+<div class="row">
 <% @bots.each do |bot| %>
   <div class="col-md-3 col-sm-4">
     <div class="thumbnail box">
@@ -20,10 +27,11 @@
     </div>
   </div>
 <% end %>
+</div>
+
 <div class="paginate-parent">
-    <div class="paginate">
+    <div class="paginate-white">
         <%= paginate @bots %>
     </div>
 </div>
-
-
+<br />
